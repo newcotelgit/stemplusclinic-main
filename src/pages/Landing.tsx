@@ -626,7 +626,8 @@ function Hero() {
                 <div className="flex flex-col gap-3">
                   {[
                     "50+ years of cellular research",
-                    "Free 30-min consultation",
+                    "GMP-certified biological materials",
+                    "Evidence-based outcome verification",
                   ].map((item) => (
                     <span key={item} className="flex items-center gap-2 text-base text-white/90 leading-none">
                       <CheckCircle2 className="w-4 h-4 shrink-0" style={{ color: "#02C39A" }} />
