@@ -1774,7 +1774,8 @@ const FAQ_ITEMS = [
   },
   {
     q: "How do I book a consultation?",
-    a: "Click the Book Consultation button on this page. You will be asked for your name and email address, then taken directly to our scheduling calendar to choose a time that suits you. The consultation is free, takes 30 minutes, and is conducted via video call with a member of Dr. Myroshnykov's clinical team. There is no obligation to proceed.",
+    a: "Consultations are scheduled through our clinic booking page. You will be asked for your name and email address, then taken directly to our scheduling calendar to choose a time that suits you. The consultation is free, takes 30 minutes, and is conducted via video call with a member of Dr. Myroshnykov's clinical team. There is no obligation to proceed.",
+    cta: { label: "Book your free consultation", href: "https://en.stemplusclinic.com/#admissions" },
   },
 ];
 
@@ -1843,7 +1844,18 @@ function FAQSection() {
                     transition: "max-height 0.35s ease",
                   }}
                 >
-                  <p className="text-slate-600 text-sm leading-relaxed pb-5">{item.a}</p>
+                  <div className="pb-5">
+                    <p className="text-slate-600 text-sm leading-relaxed">{item.a}</p>
+                    {item.cta && (
+                      <a
+                        href={item.cta.href}
+                        className="inline-flex items-center gap-1.5 mt-3 text-sm font-semibold text-[#02C39A] hover:text-[#029a7a] transition-colors"
+                      >
+                        {item.cta.label}
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </a>
+                    )}
+                  </div>
                 </div>
               </div>
             );
