@@ -1,0 +1,1939 @@
+import { Link } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import {
+  Infinity as InfinityIcon,
+  Flame,
+  CalendarDays,
+  Moon,
+  Bell,
+  BarChart3,
+  CloudUpload,
+  CheckCircle2,
+  TrendingUp,
+  Sparkles,
+  ArrowRight,
+  ArrowUpRight,
+  Star,
+  Quote,
+  ClipboardList,
+  Syringe,
+  Activity,
+  Stethoscope,
+  ShieldCheck,
+  ShieldPlus,
+  Brain,
+  Heart,
+  ShieldAlert,
+  Baby,
+  Bone,
+  Droplet,
+  Zap,
+  Sparkle,
+  Dna,
+  Pill,
+  HeartPulse,
+  Leaf,
+  ChevronLeft,
+  ChevronRight,
+  Calendar,
+  RefreshCw,
+  Plus,
+  X,
+} from "lucide-react";
+import heroBg from "@/assets/hero-bg.jpg";
+import heroBgMobile from "@/assets/hero-bg-mobile.jpg";
+import shadowBg from "@/assets/shadow-bg.jpg";
+import logo from "@/assets/logo.png";
+import testimonialPoster from "@/assets/testimonial-poster.jpg";
+import markLattaThumbnail from "@/assets/mark-latta-thumbnail.jpg";
+import aliceThumbnail from "@/assets/alice-thumbnail.png";
+import patient2 from "@/assets/patient-2.jpg";
+import patient3 from "@/assets/patient-3.jpg";
+import patient4 from "@/assets/patient-4.jpg";
+import patient5 from "@/assets/patient-5.jpg";
+import patient6 from "@/assets/patient-6.jpg";
+import patient7 from "@/assets/patient-7.jpg";
+import patient8 from "@/assets/patient-8.jpg";
+import patient9 from "@/assets/patient-9.jpg";
+import patient10 from "@/assets/patient-10.jpg";
+import patient13 from "@/assets/patient-13.jpg";
+import yaroslav from "@/assets/doctor_image/Yaroslav Myroshnykov.jpg";
+import nino from "@/assets/doctor_image/Nino Kandelaki.jpg";
+import mikhail from "@/assets/doctor_image/Mikhail Tsverava.jpg";
+import eleonora from "@/assets/doctor_image/leonora Fiodorova.jpg";
+import natia from "@/assets/doctor_image/Natia Alania.jpg";
+import giorgi from "@/assets/doctor_image/Giorgi Archaia.jpg";
+import lili from "@/assets/doctor_image/Lili Martashvili.jpg";
+import mako from "@/assets/doctor_image/Mako Khachidze.jpg";
+import tbilisiClinic from "@/assets/tbilisi-clinic.jpg";
+import tbilisiCity from "@/assets/tbilisi-city.jpg";
+import tbilisiFood from "@/assets/tbilisi-food.jpg";
+import tbilisiAirport from "@/assets/tbilisi-airport.jpg";
+
+export default function LandingPage() {
+  return (
+    <div className="min-h-screen bg-background text-foreground">
+      <Header />
+      <Hero />
+      <VideoTestimonial />
+      <Features />
+      <Reviews />
+      <MedicalTeam />
+      <Heritage />
+      <WhyTbilisi />
+      <HowItWorks />
+      <FAQSection />
+      <Footer />
+    </div>
+  );
+}
+
+/* ─── Video Testimonial Hub ─── */
+type VideoItem = {
+  id: string;
+  src: string;
+  poster: string;
+  name: string;
+  treatment: string;
+  country: string;
+  flag: string;
+};
+
+const VIDEO_TESTIMONIALS: VideoItem[] = [
+  {
+    id: "v1",
+    src: "https://player.vimeo.com/video/1206930951",
+    poster: markLattaThumbnail,
+    name: "Mark Latta",
+    treatment: "Stem Cell Therapy",
+    country: "Sarasota, Florida, USA",
+    flag: "🇺🇸",
+  },
+  {
+    id: "v2",
+    src: "https://player.vimeo.com/video/1206931316",
+    poster: aliceThumbnail,
+    name: "Alice",
+    treatment: "Stem Cell Therapy",
+    country: "Bournemouth, UK",
+    flag: "🇬🇧",
+  },
+];
+
+function VideoCard({
+  item,
+  onPlay,
+  className = "",
+  isMain = false,
+}: {
+  item: VideoItem;
+  onPlay: (v: VideoItem) => void;
+  className?: string;
+  isMain?: boolean;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={() => onPlay(item)}
+      className={`group relative block w-full overflow-hidden rounded-2xl bg-black border border-black/[0.06] shadow-lg text-left ${className}`}
+      aria-label={`Play video testimonial from ${item.name}`}
+    >
+      <img
+        src={item.poster}
+        alt={`${item.name} — ${item.treatment}`}
+        loading="lazy"
+        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+      />
+      {/* Play overlay */}
+      <div className="absolute inset-0 flex items-center justify-center">
+        <span
+          className={`flex items-center justify-center rounded-full shadow-2xl shadow-black/40 ring-1 ring-white/20 backdrop-blur-sm transition-transform duration-300 group-hover:scale-110 ${isMain ? "w-20 h-20" : "w-12 h-12"}`}
+          style={{ backgroundColor: "#02C39A" }}
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="white"
+            className={isMain ? "w-8 h-8 ml-1" : "w-5 h-5 ml-0.5"}
+          >
+            <path d="M8 5v14l11-7z" />
+          </svg>
+        </span>
+      </div>
+      {/* Bottom typography — hidden on main card, shown on smaller cards */}
+      {!isMain && (
+        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/55 to-transparent p-4 sm:p-5">
+          <p className="font-semibold text-white leading-tight text-base sm:text-lg">
+            {item.name}
+          </p>
+          <p className="text-white/85 text-sm mt-0.5">
+            {item.treatment}
+          </p>
+          <p className="text-white/70 flex items-center gap-1.5 text-sm mt-1">
+            <span aria-hidden>{item.flag}</span>
+            <span>{item.country}</span>
+          </p>
+        </div>
+      )}
+    </button>
+  );
+}
+
+function VideoTestimonial() {
+  const [active, setActive] = useState<VideoItem | null>(null);
+  const [index, setIndex] = useState(0);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!active) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setActive(null);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = prev;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [active]);
+
+  const goTo = (i: number) => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const card = el.children[i] as HTMLElement | undefined;
+    if (!card) return;
+    el.scrollTo({ left: card.offsetLeft - el.offsetLeft, behavior: "smooth" });
+    setIndex(i);
+  };
+
+  const prev = () => goTo(Math.max(0, index - 1));
+  const next = () => goTo(Math.min(VIDEO_TESTIMONIALS.length - 1, index + 1));
+
+  return (
+    <section id="video-testimonials" className="pt-24 pb-4 bg-white">
+      <div className="max-w-6xl mx-auto px-5">
+        <div className="text-center mb-10">
+          <p className="text-sm font-semibold uppercase tracking-widest text-primary mb-3">
+            Testimonials
+          </p>
+          <h2
+            className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground"
+            style={{ lineHeight: "1.15" }}
+          >
+            Hear it from our patients
+          </h2>
+        </div>
+
+        {/* Carousel */}
+        <div className="relative overflow-hidden">
+          <div
+            ref={scrollRef}
+            className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-4"
+            style={{ scrollbarWidth: "none", msOverflowStyle: "none", WebkitOverflowScrolling: "touch" }}
+          >
+            {VIDEO_TESTIMONIALS.map((v) => (
+              <div
+                key={v.id}
+                className="snap-start shrink-0 w-[90%] aspect-video"
+              >
+                <VideoCard item={v} onPlay={setActive} isMain className="h-full" />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Dot indicators */}
+        {VIDEO_TESTIMONIALS.length > 1 && (
+          <div className="flex justify-center gap-2 mt-5">
+            {VIDEO_TESTIMONIALS.map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                onClick={() => goTo(i)}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${i === index ? "bg-primary w-5" : "bg-slate-300 hover:bg-slate-400"}`}
+                aria-label={`Go to video ${i + 1}`}
+              />
+            ))}
+          </div>
+        )}
+      </div>
+
+      {/* Modal */}
+      {active && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-md animate-in fade-in duration-200 p-4"
+          onClick={() => setActive(null)}
+          role="dialog"
+          aria-modal="true"
+        >
+          <button
+            type="button"
+            onClick={() => setActive(null)}
+            className="absolute top-5 right-5 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition"
+            aria-label="Close video"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              className="w-5 h-5"
+            >
+              <path d="M18 6L6 18M6 6l12 12" strokeLinecap="round" />
+            </svg>
+          </button>
+          <div
+            className="relative w-full max-w-5xl aspect-video rounded-2xl overflow-hidden shadow-2xl bg-black"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {active.src.includes("vimeo.com") ? (
+              <iframe
+                key={active.id}
+                src={`${active.src}?autoplay=1`}
+                className="w-full h-full"
+                allow="autoplay; fullscreen; picture-in-picture"
+                allowFullScreen
+              />
+            ) : (
+              <video
+                key={active.id}
+                className="w-full h-full object-contain bg-black"
+                src={active.src}
+                poster={active.poster}
+                controls
+                autoPlay
+                playsInline
+                preload="metadata"
+              />
+            )}
+          </div>
+        </div>
+      )}
+    </section>
+  );
+}
+
+/* ─── Heritage / About ─── */
+const milestones = [
+  {
+    year: "1972",
+    title: "The Foundation of Cellular Therapy",
+    body: "Our scientific heritage begins in Kharkiv, Ukraine, with the establishment of the historic Institute for Problems of Cryobiology and Cryomedicine under the leadership of Academician V.I. Gryshchenko, pioneering global research into the safety and application of stem cells.",
+  },
+  {
+    year: "2006",
+    title: "Clinical Expansion & Leadership",
+    body: "Building upon these foundational academic breakthroughs, Dr. Yaroslav Myroshnykov serves as the founder and head of the prominent Kyiv branch network, later transitioning to serve as a leading researcher at the Transplant Coordination Center of the Ministry of Health of Ukraine.",
+  },
+  {
+    year: "2022–2024",
+    title: "European Relocation & Adaptation",
+    body: "Due to military actions in Ukraine, our elite medical team successfully relocated clinical operations internationally—deploying specialized cellular therapy projects across premium medical clinics in Batumi, Georgia and Plovdiv, Bulgaria.",
+  },
+  {
+    year: "Present Day",
+    title: "The Launch of StemPlus Tbilisi",
+    body: "Today, this fruitful Georgian-Ukrainian cooperation comes together permanently in the heart of Georgia. Led by Dr. Myroshnykov, our staff operates exclusively out of the modern, multidisciplinary Leadermed Hospital in Tbilisi, utilizing the newest diagnostic and therapeutic equipment available in modern regenerative medicine.",
+  },
+];
+
+function Heritage() {
+  return (
+    <section id="heritage" className="py-24 bg-white">
+      <div className="max-w-6xl mx-auto px-5">
+        <div className="text-center lg:text-left mb-14">
+          <p className="text-sm font-semibold uppercase tracking-widest text-[#FDAA3E] mb-3">
+            Our Heritage
+          </p>
+          <h2
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 max-w-3xl"
+            style={{ lineHeight: "1.1" }}
+          >
+            The StemPlus Legacy:
+            <br />
+            Bridging Decades of Cellular Science
+          </h2>
+        </div>
+
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          {/* Left: Credo */}
+          <div className="lg:col-span-5 lg:sticky lg:top-24">
+            <div className="relative">
+              <span className="absolute -left-3 top-0 h-full w-[3px] bg-[#FDAA3E] rounded-full hidden lg:block" />
+              <p
+                className="text-xl sm:text-2xl font-medium text-slate-900 leading-relaxed lg:pl-6"
+                style={{ textWrap: "pretty" }}
+              >
+                StemPlus is not just a modern treatment center; it is the
+                culmination of over{" "}
+                <span className="text-[#FDAA3E] font-semibold">
+                  50 years of pioneering research
+                </span>{" "}
+                in cryobiology and cellular medicine.
+              </p>
+              <p className="mt-5 text-lg text-slate-600 leading-relaxed lg:pl-6">
+                By combining historic Ukrainian scientific breakthroughs with a
+                state-of-the-art multidisciplinary hospital environment in
+                Tbilisi, Georgia, we provide patients with an unmatched gateway
+                to elite, evidence-based regenerative recovery.
+              </p>
+            </div>
+          </div>
+
+          {/* Right: Timeline */}
+          <div className="lg:col-span-7 relative">
+            <div className="absolute left-[11px] top-2 bottom-2 w-[2px] bg-gradient-to-b from-[#FDAA3E]/40 via-[#FDAA3E]/60 to-[#FDAA3E]/20" />
+            <ol className="space-y-10">
+              {milestones.map((m) => (
+                <li key={m.year} className="relative pl-10">
+                  <span className="absolute left-0 top-1.5 w-6 h-6 rounded-full bg-[#FDAA3E] ring-4 ring-white shadow-md shadow-[#FDAA3E]/30 flex items-center justify-center">
+                    <span className="w-1.5 h-1.5 rounded-full bg-white" />
+                  </span>
+                  <p className="text-sm font-bold uppercase tracking-widest text-[#FDAA3E] mb-1">
+                    {m.year}
+                  </p>
+                  <h3 className="text-lg font-semibold text-slate-900 mb-2 leading-snug">
+                    {m.title}
+                  </h3>
+                  <p className="text-[15px] text-slate-600 leading-relaxed">
+                    {m.body}
+                  </p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const NAV_LINKS = [
+  { label: "Testimonials", href: "#video-testimonials" },
+  { label: "Treatments", href: "#treatments" },
+  { label: "Medical Team", href: "#medical-team" },
+  { label: "FAQ", href: "#faq" },
+];
+
+function Header() {
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [activeHref, setActiveHref] = useState<string | null>(null);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    document.documentElement.style.scrollBehavior = "smooth";
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const sections = NAV_LINKS.map((l) =>
+      document.querySelector(l.href)
+    ).filter((el): el is Element => el !== null);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+        if (visible.length > 0) {
+          setActiveHref(`#${visible[0].target.id}`);
+        }
+      },
+      { rootMargin: "-96px 0px -70% 0px", threshold: 0 }
+    );
+
+    sections.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <>
+    <header className="sticky top-0 left-0 right-0 z-50 w-full bg-slate-950/80 backdrop-blur-md border-b border-slate-800/40">
+      <nav className="max-w-7xl mx-auto px-5 h-16 flex items-center justify-between">
+        <Link to="/" className="flex items-center gap-2.5 shrink-0">
+          <img
+            src={logo}
+            alt="Continuum"
+            className="h-[52px] w-auto object-contain"
+          />
+        </Link>
+
+        <div className="hidden md:flex items-center gap-9 text-base font-semibold tracking-wide text-slate-200">
+          {NAV_LINKS.map((l) => (
+            <a
+              key={l.href}
+              href={l.href}
+              className={`transition-colors duration-200 hover:text-[#00A896] ${
+                activeHref === l.href ? "text-[#00A896]" : ""
+              }`}
+            >
+              {l.label}
+            </a>
+          ))}
+        </div>
+
+        <div className="flex items-center gap-3">
+          <button
+            type="button"
+            aria-label="Open menu"
+            onClick={() => setOpen(true)}
+            className="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg text-white hover:bg-white/10 transition-colors"
+          >
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+            >
+              <line x1="3" y1="7" x2="21" y2="7" />
+              <line x1="3" y1="17" x2="21" y2="17" />
+            </svg>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    {/* Mobile drawer */}
+    <div
+      className={`md:hidden fixed inset-0 z-[60] transition-opacity duration-300 ${
+        open
+          ? "opacity-100 pointer-events-auto"
+          : "opacity-0 pointer-events-none"
+      }`}
+    >
+        <div
+          className="absolute inset-0 bg-black/75"
+          onClick={() => setOpen(false)}
+        />
+        <div
+          className={`absolute top-0 right-0 h-full w-[82%] max-w-sm backdrop-blur-md border-l border-slate-800/60 shadow-2xl transition-transform duration-300 ${
+            open ? "translate-x-0" : "translate-x-full"
+          }`}
+          style={{ backgroundColor: "rgba(2, 6, 23, 0.5)" }}
+        >
+          <div className="flex items-center justify-end h-16 px-5 border-b border-slate-800/60">
+            <button
+              type="button"
+              aria-label="Close menu"
+              onClick={() => setOpen(false)}
+              className="inline-flex items-center justify-center w-10 h-10 rounded-lg text-white hover:bg-white/10 transition-colors"
+            >
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+              >
+                <line x1="6" y1="6" x2="18" y2="18" />
+                <line x1="6" y1="18" x2="18" y2="6" />
+              </svg>
+            </button>
+          </div>
+          <nav className="flex flex-col px-6 py-8 gap-2">
+            {NAV_LINKS.map((l) => (
+              <a
+                key={l.href}
+                href={l.href}
+                onClick={() => setOpen(false)}
+                className="text-2xl font-bold tracking-tight text-white py-3 drop-shadow-[0_2px_6px_rgba(0,0,0,0.75)] hover:text-[#00A896] transition-colors"
+                style={{ textShadow: "0 2px 8px rgba(0,0,0,0.9), 0 0 20px rgba(0,0,0,0.8)" }}
+              >
+                {l.label}
+              </a>
+            ))}
+          </nav>
+        </div>
+      </div>
+    </>
+  );
+}
+
+/* ─── Hero (dark, full-bleed, with navbar) ─── */
+function Hero() {
+  return (
+    <>
+      <section
+        className="relative pb-24 pt-0 lg:pb-32 lg:pt-8 xl:pb-40 xl:pt-12"
+        style={{ background: "#050d0a" }}
+      >
+        {/* Background images — desktop and mobile */}
+        <img
+          src={heroBg}
+          alt=""
+          width={1920}
+          height={1080}
+          className="hidden sm:block absolute inset-0 w-full h-full object-cover object-right pointer-events-none select-none"
+          aria-hidden="true"
+        />
+        <img
+          src={heroBgMobile}
+          alt=""
+          width={1080}
+          height={1920}
+          className="block sm:hidden absolute inset-0 w-full h-full object-cover object-center pointer-events-none select-none"
+          aria-hidden="true"
+        />
+        {/* Left-side gradient for text legibility */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: `linear-gradient(to right, rgba(5,13,10,0.5), rgba(5,13,10,0.13), transparent)`,
+          }}
+        />
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: `linear-gradient(to bottom, rgba(0,0,0,0.26), transparent, rgba(5,13,10,0))`,
+          }}
+        />
+
+        {/* Hero content — left aligned */}
+        <div className="relative z-10 max-w-5xl mx-auto px-5 pt-8 sm:pt-24 pb-12 flex flex-col sm:block min-h-[85vh] sm:min-h-0">
+          <div className="w-full sm:max-w-[45%] flex flex-col flex-1 sm:block">
+            {/* H1 + subheadline — always together at top */}
+            <div>
+              <ScrollReveal delay={80}>
+                <h1
+                  className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white text-left"
+                  style={{ lineHeight: "1.08" }}
+                >
+                  Stem Cell Therapy<br className="block sm:hidden" /> That Actually Works
+                </h1>
+              </ScrollReveal>
+
+              <ScrollReveal delay={160}>
+                <p
+                  className="mt-6 text-lg text-white text-left"
+                  style={{ textWrap: "pretty", lineHeight: "1.6" }}
+                >
+                  Combining 50 years of cellular science with elite medical care — for serious conditions and long-term vitality.
+                </p>
+              </ScrollReveal>
+            </div>
+
+            {/* Trust strip — pushed to bottom on mobile */}
+            <div className="mt-auto sm:mt-10">
+              <ScrollReveal delay={240}>
+                <div className="flex flex-col gap-3">
+                  {[
+                    "50+ years of cellular research",
+                    "Free 30-min consultation",
+                  ].map((item) => (
+                    <span key={item} className="flex items-center gap-2 text-base text-white/90 leading-none">
+                      <CheckCircle2 className="w-4 h-4 shrink-0" style={{ color: "#02C39A" }} />
+                      <span>{item}</span>
+                    </span>
+                  ))}
+                </div>
+              </ScrollReveal>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+/* ─── Features ─── */
+const features = [
+  {
+    icon: Flame,
+    title: "Streak tracking",
+    desc: "Watch your momentum build day by day. Never break the chain.",
+  },
+  {
+    icon: CalendarDays,
+    title: "Calendar heatmap",
+    desc: "See your consistency at a glance with a beautiful 30-day view.",
+  },
+  {
+    icon: BarChart3,
+    title: "Smart insights",
+    desc: "Current streak, longest streak, completion rate — all the stats that matter.",
+  },
+  {
+    icon: Bell,
+    title: "Gentle reminders",
+    desc: "Set custom reminder times so you never forget your daily rituals.",
+  },
+  {
+    icon: Moon,
+    title: "Dark mode",
+    desc: "Easy on the eyes, day or night. Follows your system or your choice.",
+  },
+  {
+    icon: CloudUpload,
+    title: "Cloud sync",
+    desc: "Sign in to sync your habits across devices. Your data, always safe.",
+  },
+];
+
+const treatCards = [
+  {
+    title: "Erectile Dysfunction & Urological Recovery",
+    desc: "Advanced cellular therapies targeted at restoring vascular integrity, improving blood flow, and optimizing sexual health function.",
+    Icon: ShieldCheck,
+    color: "#03045E",
+  },
+  {
+    title: "Neurology & Stroke Recovery",
+    desc: "Cellular protocols designed for structural neurological support, cognitive optimization, and post-stroke rehabilitation.",
+    Icon: Brain,
+    color: "#03045E",
+  },
+  {
+    title: "Autism Spectrum Protocols",
+    desc: "Specialized bio-therapeutic routing focused on pediatric neuro-developmental support and childhood cellular optimization.",
+    Icon: Activity,
+    color: "#02C39A",
+  },
+  {
+    title: "Autoimmune & Systemic Renewal Protocols",
+    desc: "Targeted immune-modulation and post-traumatic recovery therapies addressing complex inflammation, Crohn's disease, and full-body tissue repair.",
+    Icon: ShieldAlert,
+    color: "#00A896",
+  },
+  {
+    title: "Cellular Rejuvenation & Longevity",
+    desc: "Advanced tissue renewal and systemic anti-aging protocols engineered for international health tourists.",
+    Icon: Heart,
+    color: "#02C39A",
+  },
+  {
+    title: "Diabetes & Metabolic Repair",
+    desc: "Comprehensive metabolic routing focused on advanced glucose regulation and systematic endocrine support.",
+    Icon: RefreshCw,
+    color: "#03045E",
+  },
+  {
+    title: "Orthopedic Spine & Joint Regeneration",
+    desc: "Advanced biomaterial targeting aimed at restoring joint mobility and supporting complex spinal recovery.",
+    Icon: Flame,
+    color: "#00A896",
+  },
+];
+
+function Features() {
+  return (
+    <section id="treatments" className="pt-12 pb-24 bg-white">
+      <div className="max-w-7xl mx-auto px-5">
+        <ScrollReveal>
+          <div className="mb-14 max-w-3xl">
+            <h2
+              className="text-3xl sm:text-4xl font-bold tracking-tight text-[#03045E]"
+              style={{ lineHeight: "1.15" }}
+            >
+              What we treat
+            </h2>
+            <p className="mt-4 text-lg text-slate-500">
+              Targeted regenerative therapies for cellular optimization, chronic
+              recovery, and functional vitality.
+            </p>
+          </div>
+        </ScrollReveal>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          {treatCards.map((c, i) => (
+            <ScrollReveal key={c.title} delay={i * 60}>
+              <div className="group relative h-full rounded-2xl border border-slate-200/80 bg-white p-7 pb-14 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-100/50">
+                <div className="w-11 h-11 rounded-xl bg-slate-50 flex items-center justify-center mb-5">
+                  <c.Icon className="w-5 h-5" style={{ color: c.color }} />
+                </div>
+                <h3 className="text-lg font-semibold text-[#03045E] tracking-tight mb-2">
+                  {c.title}
+                </h3>
+                <p className="text-base text-slate-600 leading-relaxed">
+                  {c.desc}
+                </p>
+                <span className="absolute bottom-5 right-6 text-sm font-medium text-slate-400 transition-all duration-300 group-hover:text-[#02C39A] group-hover:translate-x-1">
+                  Learn more →
+                </span>
+              </div>
+            </ScrollReveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── 5-Day Treatment Process Timeline ─── */
+const treatmentDays = [
+  {
+    day: "Day 1",
+    icon: ClipboardList,
+    title: "Comprehensive Diagnostics & Intake",
+    points: [
+      "Multi-specialty clinical physician consultation and detailed medical history mapping",
+      "Baseline clinical diagnostic blood draw and targeted ultrasound mapping",
+      "Individualized cellular therapeutic plan formulation matching patient metrics",
+    ],
+  },
+  {
+    day: "Day 2",
+    icon: Syringe,
+    title: "Primary Laboratory Infusion Phase",
+    points: [
+      "Initiation of primary laboratory-certified embryonic stem cell and exosome infusion (3-4 hour duration)",
+      "Administration of specialized regulatory peptides to target and optimize metabolic function",
+      "Implementation of baseline bioidentical protocols",
+    ],
+  },
+  {
+    day: "Day 3",
+    icon: Sparkles,
+    title: "Secondary Administration & Targeted Aesthetics",
+    points: [
+      "Secondary targeted cell and exosome booster infusion procedures",
+      "Optional integration of localized cosmetic cell injectables or tissue therapies",
+      "Optional medical massage therapy to maximize global circulatory uptake",
+    ],
+  },
+  {
+    day: "Day 4",
+    icon: Activity,
+    title: "Dynamic Evaluation & Sensitivity Mapping",
+    points: [
+      "Comprehensive assessment of early dynamic changes in nervous system signaling",
+      "Precise pallesthesiometry testing to map changes in nerve conduction and localized sensitivity",
+      "Precision clinical data capture to cross-reference baseline metrics",
+    ],
+  },
+  {
+    day: "Day 5",
+    icon: ShieldCheck,
+    title: "Discharge Summary & Follow-Up Milestone Layout",
+    points: [
+      "Final multi-specialty clinical team panel evaluation and recovery summary",
+      "Prescription formulation for long-term supportive home care, peptides, or bioidentical tools",
+      "Structured layout of post-discharge remote monitoring checkpoints and follow-up milestones",
+    ],
+  },
+];
+
+function HowItWorks() {
+  return (
+    <section id="process" className="py-24 bg-white border-y border-border/30">
+      <div className="max-w-6xl mx-auto px-5">
+        <ScrollReveal>
+          <div className="text-center mb-16">
+            <p className="text-sm font-semibold uppercase tracking-widest text-[#FDAA3E] mb-3">
+              Treatment Process
+            </p>
+            <h2
+              className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900"
+              style={{ lineHeight: "1.15" }}
+            >
+              Five Steps to Your Recovery
+            </h2>
+            <p className="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">
+              A precision-guided 5-day clinical protocol — engineered for
+              measurable regeneration and lasting recovery.
+            </p>
+          </div>
+        </ScrollReveal>
+
+        {/* Desktop: horizontal pipeline */}
+        <div className="hidden lg:block relative">
+          {/* Connector line */}
+          <div className="absolute top-7 left-[10%] right-[10%] h-[2px] bg-gradient-to-r from-[#FDAA3E]/30 via-[#FDAA3E] to-[#FDAA3E]/30" />
+          <div className="grid grid-cols-5 gap-5 relative">
+            {treatmentDays.map((d, i) => (
+              <ScrollReveal key={d.day} delay={i * 90}>
+                <div className="flex flex-col items-center">
+                  {/* Day marker */}
+                  <div className="relative z-10 w-14 h-14 rounded-full bg-[#FDAA3E] text-white flex items-center justify-center shadow-lg shadow-[#FDAA3E]/30 ring-4 ring-white mb-5">
+                    <d.icon className="w-6 h-6" strokeWidth={2.25} />
+                  </div>
+                  <div className="w-full rounded-2xl border border-slate-200 bg-white p-5 shadow-sm hover:shadow-md hover:border-[#FDAA3E]/40 transition-all duration-300 h-full">
+                    <p className="text-[11px] font-bold uppercase tracking-widest text-[#FDAA3E] mb-1.5">
+                      {d.day}
+                    </p>
+                    <h3 className="font-semibold text-slate-900 text-lg mb-3 leading-snug">
+                      {d.title}
+                    </h3>
+                    <ul className="space-y-2">
+                      {d.points.map((p, j) => (
+                        <li
+                          key={j}
+                          className="flex gap-2 text-[13px] text-slate-600 leading-relaxed"
+                        >
+                          <span className="mt-1.5 w-1 h-1 rounded-full bg-[#FDAA3E] shrink-0" />
+                          <span>{p}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+
+        {/* Mobile/Tablet: vertical timeline */}
+        <div className="lg:hidden relative space-y-6">
+          <div className="absolute left-7 top-4 bottom-4 w-[2px] bg-gradient-to-b from-[#FDAA3E]/30 via-[#FDAA3E] to-[#FDAA3E]/30" />
+          {treatmentDays.map((d, i) => (
+            <ScrollReveal key={d.day} delay={i * 70}>
+              <div className="relative flex gap-5 items-start">
+                <div className="relative z-10 w-14 h-14 rounded-full bg-[#FDAA3E] text-white flex items-center justify-center shadow-lg shadow-[#FDAA3E]/30 ring-4 ring-white shrink-0">
+                  <d.icon className="w-6 h-6" strokeWidth={2.25} />
+                </div>
+                <div className="flex-1 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+                  <p className="text-[11px] font-bold uppercase tracking-widest text-[#FDAA3E] mb-1.5">
+                    {d.day}
+                  </p>
+                  <h3 className="font-semibold text-slate-900 text-lg mb-3 leading-snug">
+                    {d.title}
+                  </h3>
+                  <ul className="space-y-2">
+                    {d.points.map((p, j) => (
+                      <li
+                        key={j}
+                        className="flex gap-2 text-[13px] text-slate-600 leading-relaxed"
+                      >
+                        <span className="mt-1.5 w-1 h-1 rounded-full bg-[#FDAA3E] shrink-0" />
+                        <span>{p}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </ScrollReveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── Clinical Success Stories Carousel ─── */
+const successStories = [
+  {
+    kind: "image" as const,
+    image: patient10,
+    badge: "NEUROLOGICAL STABILIZATION & RECOVERY",
+    text: "I highly value the absolute therapeutic transparency and comprehensive approach provided by the medical staff. Every action, step, and diagnostic verification was detailed to me with total clarity. I felt notable structural benefits and an energetic surge within just 4 days of cellular care.",
+    author: "Female Patient",
+    location: "Eastern Europe",
+  },
+  {
+    kind: "image" as const,
+    image: patient2,
+    badge: "PEDIATRIC AUTISM NEUROREHABILITATION",
+    text: "We traveled from Al Ain for my son Muhammad's Autism care. The clinic handled everything seamlessly, from airport arrival to daily transport. Over a targeted 3-day cellular infusion program, we witnessed immediate behavioral breakthroughs—Muhammad's severe sleep irregularity has completely resolved, and he is now sleeping deeply and calmly.",
+    author: "Muhammad's Father",
+    location: "United Arab Emirates",
+  },
+  {
+    kind: "image" as const,
+    image: patient3,
+    badge: "POST-STROKE HEMIPLEGIA RECOVERY",
+    text: "Three and a half years ago, a stroke left me with severe hemiplegia and motor paralysis across half of my body. After arriving at StemPlus Tbilisi, I received targeted intravenous, intrathecal, and endonasal embryonic stem cell and placental infusions. The clinical results have been profound—I am experiencing a step-by-step return of physical motor control and tactile sensation.",
+    author: "Kamil Kamshad",
+    location: "Iraq",
+  },
+  {
+    kind: "image" as const,
+    image: patient4,
+    badge: "CHRONIC CROHN'S DISEASE PROTOCOL",
+    text: "As a Crohn's disease patient for over 20 years, I spent the last five years in absolute agony, undergoing two unsuccessful operations. After a friend recommended this team, I traveled to the clinic for specialized stem cell therapy. Within just the first five days of my personalized biological care, my localized pain began to drastically subside and my baseline physical energy levels surged.",
+    author: "Mustafa",
+    location: "Chronic Crohn's Patient",
+  },
+  {
+    kind: "image" as const,
+    image: patient5,
+    badge: "MULTI-TARGET SYSTEMIC REJUVENATION",
+    text: "I came to Tbilisi for a multi-target therapy focused on systematic anti-aging and rejuvenation. The medical staff explained every diagnostic action with total transparency, removing all my anxiety. Over a 5-day custom treatment plan covering my face, neck, and abdomen, my physical vitality skyrocketed, my skin looks noticeably regenerated, and my chronic back and waist soreness completely vanished.",
+    author: "International Patient",
+    location: "China",
+  },
+  {
+    kind: "image" as const,
+    image: patient6,
+    badge: "AUTISM SPECTRUM COGNITIVE DEVELOPMENT",
+    text: "This is our second time trusting this elite medical team with my son Seif's neurorehabilitation for Autism. The custom cellular therapy, combined with the clinic's exceptionally organized, clean, and deeply supportive multidisciplinary hospital environment in Tbilisi, gives us immense confidence in his continuous cognitive progress.",
+    author: "Seif's Father",
+    location: "Saudi Arabia",
+  },
+  {
+    kind: "image" as const,
+    image: patient7,
+    badge: "CHRONIC ORGAN REPAIR & METABOLIC SYSTEMS",
+    text: "The clinic's medical coordination work is beautiful and highly authoritative. I have been following this specific medical team since their initial practice back in Ukraine, and now in Tbilisi, their execution is flawless. For anyone looking for cutting-edge solutions for complex internal organs or advanced metabolic conditions, I can verify their protocols are elite.",
+    author: "Verified Clinic Reviewer",
+    location: "Gulf Region",
+  },
+  {
+    kind: "image" as const,
+    image: patient8,
+    badge: "SYSTEMIC ANTI-AGING & CELL VITALIZATION",
+    text: "I traveled from Mersin for a multi-day cellular anti-aging and total system vitalization plan. Within 6 to 7 days of precise cellular care under Dr. Yaroslav, I feel completely transformed. I am experiencing a massive surge in physical energy, youthful skin regeneration, and total systemic optimization. The clinical execution here is perfect.",
+    author: "Anti-Aging Patient",
+    location: "Turkey",
+  },
+  {
+    kind: "image" as const,
+    image: patient9,
+    badge: "AUTISM SPECTRUM COORDINATED RECOVERY",
+    text: "The care and absolute clarity of the consultation process here is remarkable. From the moment we touched down at the airport, the coordination team handled every logistic with incredible support. This thorough care has given us immense hope and security regarding our young son's continuous cognitive and socialization tracking plans.",
+    author: "Pediatric Care Parent",
+    location: "United Arab Emirates",
+  },
+  {
+    kind: "graphic" as const,
+    graphic: {
+      bg: "#03045E",
+      title: "-60%",
+      subtitle: "Glucose Drop by Day 2",
+      titleColor: "#FDAA3E",
+    },
+    badge: "TYPE 2 DIABETES PROTOCOL",
+    text: "I struggled to control my Type 2 Diabetes with high doses of insulin and pills for 14 years. Following an intensive 5-day custom embryonic stem cell and exosome program under Dr. Yaroslav, my blood glucose levels dropped by a remarkable 60% by Day 2. By Day 5, my leg numbness and severe sciatic nerve pain were reduced by nearly 90%.",
+    author: "Fawaz",
+    location: "Kuwait",
+  },
+
+  {
+    kind: "graphic" as const,
+    graphic: { bg: "#02C39A", icon: Bone, label: "Mobility Restored" },
+    badge: "SPINAL DISC & NERVE MOBILE REHABILITATION",
+    text: "I suffered from severe spinal disc herniation and localized radiating nerve pain that restricted my movement. The targeted cell and exosome therapy plan completely eliminated my localized joint inflammation and accelerated my recovery without any surgical risks. I have fully regained my physical mobility and comfort.",
+    author: "Orthopedic Patient",
+    location: "Gulf Region",
+  },
+  {
+    kind: "graphic" as const,
+    graphic: { bg: "#03045E", icon: Dna, label: "Joint Regeneration" },
+    badge: "COMPLEX TISSUE & ORTHOPEDIC REPAIR",
+    text: "The positive energy, attentiveness, and continuous support from the clinical coordinators made my treatment incredibly comforting. Every staff member is highly professional, ensuring a flawless therapeutic process that has completely revitalized my joint movement and general physical capacity.",
+    author: "International Patient",
+    location: "Middle East",
+  },
+  {
+    kind: "image" as const,
+    image: patient13,
+    badge: "METABOLIC COMPENSATION & VITALITY",
+    text: "The dynamic bodily changes and energy optimization I experienced by Day 5 were incredible. This multi-potent embryonic cell protocol has completely restored my physical activity levels, balanced my metabolic metrics, and provided deep, restorative sleep quality that I haven't had in years.",
+    author: "Healthcare Tourist",
+    location: "Saudi Arabia",
+  },
+  {
+    kind: "graphic" as const,
+    graphic: { bg: "#00A896", icon: ShieldPlus, label: "Systemic Renewal" },
+    badge: "POST-TRAUMATIC SYSTEMIC RENEWAL",
+    text: "A highly sophisticated medical alliance. The combination of specialized embryonic Muse cells with target peptides completely eliminated my chronic pain, optimized my internal organ tracking metrics, and allowed me to transition toward a completely drug-independent lifestyle. I highly praise this team's work.",
+    author: "Systemic Therapy Patient",
+    location: "Iraq",
+  },
+];
+
+function locationFlag(loc: string): string {
+  const l = loc.toLowerCase();
+  if (l.includes("united arab") || l.includes("uae")) return "🇦🇪";
+  if (l.includes("saudi")) return "🇸🇦";
+  if (l.includes("iraq")) return "🇮🇶";
+  if (l.includes("turkey") || l.includes("türkiye")) return "🇹🇷";
+  if (l.includes("china")) return "🇨🇳";
+  if (l.includes("eastern europe")) return "🇪🇺";
+  if (l.includes("gulf")) return "🇦🇪";
+  if (l.includes("middle east")) return "🌍";
+  return "🌍";
+}
+
+function Reviews() {
+  const [index, setIndex] = useState(0);
+  const total = successStories.length;
+  const prev = () => setIndex((i) => (i - 1 + total) % total);
+  const next = () => setIndex((i) => (i + 1) % total);
+  const story = successStories[index];
+
+  return (
+    <section id="testimonials" className="py-24 bg-white">
+      <div className="max-w-6xl mx-auto px-5">
+        <ScrollReveal>
+          <div className="text-center mb-12 sm:mb-16">
+            <p className="text-sm font-semibold uppercase tracking-widest text-[#FDAA3E] mb-3">
+              Patient Outcomes
+            </p>
+            <h2
+              className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-slate-900"
+              style={{ lineHeight: "1.15" }}
+            >
+              Clinical Success Stories
+            </h2>
+            <p className="mt-4 text-slate-600 max-w-2xl mx-auto text-base sm:text-lg">
+              Authentic recovery journeys from international patients treated at
+              our Tbilisi clinic.
+            </p>
+          </div>
+        </ScrollReveal>
+
+        <ScrollReveal>
+          {/* Mobile: native scroll-snap swipe carousel with peek */}
+          <div className="md:hidden -mx-5">
+            <div
+              className="flex overflow-x-auto pb-2 snap-x snap-mandatory scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+              style={{
+                scrollPaddingLeft: "1.25rem",
+                WebkitOverflowScrolling: "touch",
+              }}
+            >
+              {successStories.map((s, i) => (
+                <div
+                  key={i}
+                  className="snap-start shrink-0 basis-[87%] pl-5 last:pr-5"
+                  style={{ transform: "translateZ(0)" }}
+                >
+                  <div className="rounded-3xl overflow-hidden bg-white border border-slate-200/80 shadow-[0_10px_40px_-15px_rgba(15,23,42,0.15)]">
+                    <div
+                      className="relative h-[300px] sm:h-[360px] flex items-center justify-center"
+                      style={{
+                        backgroundColor:
+                          s.kind === "graphic" ? s.graphic.bg : "#0f172a",
+                      }}
+                    >
+                      {s.kind === "image" ? (
+                        <img
+                          src={s.image}
+                          alt={s.author}
+                          className="absolute inset-0 w-full h-full object-cover"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      ) : "title" in s.graphic ? (
+                        <div className="relative px-6 text-center">
+                          <div
+                            className="text-6xl sm:text-7xl font-extrabold tracking-tight leading-none"
+                            style={{ color: s.graphic.titleColor }}
+                          >
+                            {s.graphic.title}
+                          </div>
+                          <div className="mt-4 text-white text-lg sm:text-lg font-semibold uppercase tracking-wider">
+                            {s.graphic.subtitle}
+                          </div>
+                        </div>
+                      ) : (
+                        <div className="relative flex flex-col items-center text-center px-6">
+                          {(() => {
+                            const I = s.graphic.icon;
+                            return (
+                              <I
+                                className="w-24 h-24 sm:w-28 sm:h-28 text-white"
+                                strokeWidth={1.25}
+                              />
+                            );
+                          })()}
+                          <div className="mt-4 text-white text-xl sm:text-2xl font-bold tracking-tight">
+                            {s.graphic.label}
+                          </div>
+                        </div>
+                      )}
+                      <div className="absolute inset-x-0 bottom-0 pt-16 pb-4 px-5 bg-gradient-to-t from-slate-950/90 via-slate-950/60 to-transparent">
+                        <p className="text-[10px] font-semibold uppercase tracking-wider text-[#FDC987]/90 mb-1.5">
+                          {s.badge}
+                        </p>
+                        <div className="flex items-end justify-between gap-3">
+                          <p className="text-white text-lg font-bold tracking-tight leading-tight">
+                            {s.author}
+                          </p>
+                          <span className="shrink-0 inline-flex items-center gap-1.5 text-white/90 text-sm font-medium">
+                            <span className="text-lg leading-none">
+                              {locationFlag(s.location)}
+                            </span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="relative p-6">
+                      <Quote className="absolute top-4 right-4 w-12 h-12 text-[#FDAA3E]/15" />
+                      <p
+                        className="relative text-slate-700 text-lg leading-relaxed"
+                        style={{ textWrap: "pretty" }}
+                      >
+                        "{s.text}"
+                      </p>
+                      <p className="relative mt-4 text-sm text-slate-400 font-medium">
+                        {String(i + 1).padStart(2, "0")} /{" "}
+                        {String(total).padStart(2, "0")}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Desktop / tablet: 2-card view with side arrows */}
+          <div className="relative hidden md:block">
+            <div className="grid md:grid-cols-2 gap-5 md:gap-8 items-stretch">
+              {/* Left: image OR typographic data graphic with overlayed metadata */}
+              <div
+                className="relative rounded-3xl overflow-hidden flex items-center justify-center h-[320px] sm:h-[380px] md:h-[460px] transition-colors duration-500"
+                style={{
+                  backgroundColor:
+                    story.kind === "graphic" ? story.graphic.bg : "#0f172a",
+                }}
+              >
+                {successStories.map((s, i) =>
+                  s.kind === "image" ? (
+                    <img
+                      key={i}
+                      src={s.image}
+                      alt={s.author}
+                      className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${
+                        i === index ? "opacity-100" : "opacity-0"
+                      }`}
+                      loading="eager"
+                      decoding="async"
+                      fetchPriority={i === 0 ? "high" : "low"}
+                      aria-hidden={i !== index}
+                    />
+                  ) : null,
+                )}
+
+                {story.kind === "graphic" &&
+                  ("title" in story.graphic ? (
+                    <div className="relative px-8 text-center">
+                      <div
+                        className="text-6xl sm:text-7xl md:text-8xl font-extrabold tracking-tight leading-none"
+                        style={{ color: story.graphic.titleColor }}
+                      >
+                        {story.graphic.title}
+                      </div>
+                      <div className="mt-4 text-white text-lg sm:text-lg md:text-xl font-semibold uppercase tracking-wider">
+                        {story.graphic.subtitle}
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="relative flex flex-col items-center text-center px-8">
+                      {(() => {
+                        const I = story.graphic.icon;
+                        return (
+                          <I
+                            className="w-24 h-24 sm:w-32 sm:h-32 md:w-36 md:h-36 text-white"
+                            strokeWidth={1.25}
+                          />
+                        );
+                      })()}
+                      <div className="mt-5 text-white text-xl sm:text-2xl md:text-3xl font-bold tracking-tight">
+                        {story.graphic.label}
+                      </div>
+                    </div>
+                  ))}
+
+                {/* Overlay: Name, Treatment, Country */}
+                <div className="absolute inset-x-0 bottom-0 pt-16 pb-5 px-5 sm:px-6 bg-gradient-to-t from-slate-950/90 via-slate-950/60 to-transparent">
+                  <p className="text-[10px] sm:text-sm font-semibold uppercase tracking-wider text-[#FDC987]/90 mb-1.5">
+                    {story.badge}
+                  </p>
+                  <div className="flex items-end justify-between gap-3">
+                    <p className="text-white text-lg sm:text-xl md:text-2xl font-bold tracking-tight leading-tight">
+                      {story.author}
+                    </p>
+                    <span className="shrink-0 inline-flex items-center gap-1.5 text-white/90 text-sm sm:text-base font-medium">
+                      <span className="text-lg sm:text-lg leading-none">
+                        {locationFlag(story.location)}
+                      </span>
+                      <span className="hidden sm:inline">{story.location}</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right: white quote card */}
+              <div className="relative rounded-3xl bg-white border border-slate-200/80 shadow-[0_10px_40px_-15px_rgba(15,23,42,0.15)] p-6 sm:p-8 md:p-10 flex flex-col justify-center min-h-[260px] md:min-h-[460px]">
+                <Quote className="absolute top-6 right-6 w-14 h-14 sm:w-20 sm:h-20 text-[#FDAA3E]/15" />
+                <p
+                  className="relative text-slate-700 text-lg sm:text-lg md:text-xl leading-relaxed"
+                  style={{ textWrap: "pretty" }}
+                >
+                  "{story.text}"
+                </p>
+                <p className="relative mt-5 text-sm text-slate-400 font-medium">
+                  {String(index + 1).padStart(2, "0")} /{" "}
+                  {String(total).padStart(2, "0")}
+                </p>
+              </div>
+            </div>
+
+            {/* Absolute-positioned nav arrows on the carousel edges (desktop only) */}
+            <button
+              onClick={prev}
+              aria-label="Previous story"
+              className="absolute -left-3 md:-left-5 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-11 h-11 md:w-12 md:h-12 rounded-full bg-slate-950/40 hover:bg-slate-950/70 text-white backdrop-blur-sm opacity-70 hover:opacity-100 active:scale-95 transition-all"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            <button
+              onClick={next}
+              aria-label="Next story"
+              className="absolute -right-3 md:-right-5 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-11 h-11 md:w-12 md:h-12 rounded-full bg-slate-950/40 hover:bg-slate-950/70 text-white backdrop-blur-sm opacity-70 hover:opacity-100 active:scale-95 transition-all"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+          </div>
+        </ScrollReveal>
+      </div>
+    </section>
+  );
+}
+
+/* ─── Medical Team ─── */
+const TEAM = [
+  {
+    img: yaroslav,
+    name: "Dr. Yaroslav Myroshnykov, MD, PhD",
+    role: "Chief Physician & Co-Founder",
+    badges: ["50+ Publications", "7 Patents", "Int'l License"],
+    bio: [
+      "Co-founder of StemPlus and a globally recognised authority in stem cell medicine, Dr. Yaroslav Myroshnykov has spent nearly three decades pioneering regenerative treatments across Ukraine, China, and now Georgia. He is the author of 50+ publications, holder of 7 invention patents, and was awarded the Young Scientist Prize by the Academy of Medical Sciences of Ukraine.",
+      "Dr. Myroshnykov graduated with honors from the National Medical University named after Academician O.O. Bogomolets in Kyiv in 1996, before spending almost a decade (1996–2005) at the Institute of Urology of the Academy of Medical Sciences of Ukraine, specialising in general medicine and sexopathology.",
+      "In 2001 he was awarded the Young Scientist Prize by the Academy of Medical Sciences of Ukraine, following his Candidate of Medical Sciences dissertation on the diagnosis and treatment of vascular-origin erectile dysfunction. He went on to serve as Chief Sexopathology Expert for the Kyiv City Health Department (2006–2011), organising seven scientific and practical conferences, while simultaneously directing research at the Ukrainian Scientific Center for Cryobiology and Cryomedicine (2006–2013). From 2009 to 2013 he founded and led the Institute of Stem Cell Medicine PLUS, and from 2010 he served as a leading researcher at the Ministry of Health of Ukraine's Center for Stem Cell Therapy.",
+      "Between 2017 and 2019, Dr. Myroshnykov practiced at the Boao Life Care Center in Hainan, China, specialising in stem cell therapy and sexual function optimisation under an international medical practice license. Since Russia's invasion of Ukraine, he has continued his clinical work abroad — first at the Revival Technologies Clinic in Batumi (2022), then Phoenix Clinic in Plovdiv, Bulgaria (2023–2024) — before joining StemPlus in Tbilisi in May 2024, where he now leads the clinic's cellular medicine programs in anti-aging, diabetes management, and sexual function rehabilitation.",
+    ],
+    credentials: [
+      "MD, National Medical University named after O.O. Bogomolets, Kyiv (1996, with honors)",
+      "Candidate of Medical Sciences (Urology) — Institute of Urology and Nephrology, Academy of Medical Sciences of Ukraine",
+      "Higher Qualification Category in Urology — Ministry of Health of Ukraine (awarded 2019)",
+      "Specialist Qualification in Healthcare Organization & Management — Ministry of Health of Ukraine (awarded 2021)",
+      "International medical practice license (China)",
+      "Young Scientist Prize, Academy of Medical Sciences of Ukraine (2001)",
+    ],
+  },
+  {
+    img: nino,
+    name: "Dr. Nino Kandelaki, MD, PhD, Postdoctoral",
+    role: "Chief Cosmetic Dermatologist",
+    badges: [],
+    bio: [
+      "Chief Cosmetic Dermatologist at StemPlus, Dr. Nino Kandelaki brings over 17 years of clinical dermatology and aesthetic medicine experience, with advanced international training spanning Korea, Georgia, and beyond.",
+      "Dr. Kandelaki is a dermatologist and venereologist with more than seventeen years of clinical experience in dermatology, trichology, and aesthetic medicine. She previously served as lead injector at the City Luxe clinic and worked as an international trainer for the Spanish skincare brand PBSerum.",
+      "Her ongoing training reflects a deep specialisation in regenerative and minimally invasive aesthetic techniques: she completed a course on placental extract in therapeutic and aesthetic practice under Dr. Dong-Hwan Kim, Director of the Korean Academy of Anti-Aging Medicine (Baku, 2018); an Excellence Training in Aptos thread-lifting methods under the technique's Georgian originators, Dr. G., M., and C. Sulamanidze; and the e.p.t.q. Hyaluronic Acid Filler Master Course for Experts, certified by JETEMA. She has also participated in international congresses and refresher courses in Berlin, the United States, and the Czech Republic.",
+    ],
+    credentials: [
+      "MD, PhD, Postdoctoral — Dermatology & Venereology",
+      "Placental Extract in Therapeutic Practice & Aesthetic Medicine — Korean Academy of Anti-Aging Medicine (Baku, 2018)",
+      "Aptos Thread Lifting Methods, Excellence Training",
+      "e.p.t.q. Hyaluronic Acid Filler Master Course — JETEMA",
+    ],
+  },
+  {
+    img: mikhail,
+    name: "Dr. Mikhail Tsverava, MD, PhD",
+    role: "Senior Radiologist & Diagnostic Specialist",
+    badges: [],
+    bio: [
+      "Senior Radiologist with extensive practice in functional diagnostic mapping and advanced imaging. Expert in ultrasound-guided precision cellular targeting used to verify and document treatment outcomes. Provides evidence-based diagnostic support throughout every stage of the StemPlus protocol.",
+    ],
+    credentials: [],
+  },
+  {
+    img: eleonora,
+    name: "Dr. Eleonora Fiodorova, MD",
+    role: "Clinical Endocrinologist & Nutritionist",
+    badges: [],
+    bio: [
+      "Clinical Endocrinologist specialising in advanced endocrine systems, hormonal balance, and metabolic stabilization. Plays a key role in designing and monitoring the hormonal and metabolic components of each patient's treatment plan. Expert in integrating nutritional protocols with regenerative cellular therapy for optimised outcomes.",
+    ],
+    credentials: [],
+  },
+  {
+    img: natia,
+    name: "Dr. Natia Alania, MD",
+    role: "Clinical Neurologist & Neurodevelopmental Specialist",
+    badges: [],
+    bio: [
+      "Clinical Neurologist specialising in neuro-recovery pathways, functional brain mapping, and neurodevelopmental disorders. Dedicated expert in cellular protocols for Autism Spectrum Disorders and neurodegenerative conditions. Works closely with Dr. Archaia to deliver comprehensive neurological care within the StemPlus multidisciplinary team.",
+    ],
+    credentials: [
+      "Category I Qualification Certificate in Neurology — Georgian state medical certification commission (No. 022439, Aug 2025)",
+    ],
+  },
+  {
+    img: giorgi,
+    name: "Dr. Giorgi Archaia, MD",
+    role: "Neurosurgeon, Neurologist & Vertebrologist",
+    badges: [],
+    bio: [
+      "A multidisciplinary neurologist, chiropractor, and rehabilitation specialist, Dr. Giorgi Archaia blends over 12 years of neurological expertise with hands-on manual therapy techniques trained across Georgia, Israel, and Russia.",
+      "Dr. Archaia is a neurologist, chiropractor, acupuncturist, and rehabilitation specialist with over 12 years of experience treating neurological and musculoskeletal conditions. A graduate of Tbilisi Teaching Medical University \"Hippocrates,\" he trained further at leading institutions abroad, including Asutta Clinic in Israel and Sechenov Moscow Medical University in Russia.",
+      "His multidisciplinary approach spans neurology, chiropractic, acupuncture, and modern rehabilitation methods. He is skilled in acupressure, manual therapy, physiotherapy, therapeutic exercise, medication and pharmacopuncture blockades, and visceral massage — combining these techniques to deliver comprehensive, patient-centered care within the StemPlus multidisciplinary team.",
+    ],
+    credentials: [
+      "Graduate, Tbilisi Teaching Medical University \"Hippocrates\"",
+      "Clinical training, Asutta Clinic (Israel)",
+      "Clinical training, Sechenov Moscow Medical University (Russia)",
+    ],
+  },
+  {
+    img: lili,
+    name: "Lili Martashvili",
+    role: "Director of Clinical Nursing & Compliance",
+    badges: [],
+    bio: [
+      "Director of Clinical Nursing overseeing all patient safety protocols and clinical compliance standards at Leadermed Hospital. Commands the triage systems and outpatient healthcare standards that ensure every patient receives consistent, safe care throughout their 5-day protocol. The operational backbone of the StemPlus clinical team.",
+    ],
+    credentials: [],
+  },
+  {
+    img: mako,
+    name: "Mako Khachidze",
+    role: "Clinical Infusion Nurse",
+    badges: [],
+    bio: [
+      "Clinical Infusion Nurse specialising in the precision administration and monitoring of advanced intravenous cellular protocols. Provides hands-on care throughout every stem cell infusion procedure ensuring accuracy, comfort, and safety. A trusted presence for every international patient throughout their treatment at StemPlus.",
+    ],
+    credentials: [],
+  },
+];
+
+
+function MedicalTeam() {
+  const scrollerRef = useRef<HTMLDivElement | null>(null);
+  const [active, setActive] = useState<(typeof TEAM)[number] | null>(null);
+
+  const scrollByDir = (dir: 1 | -1) => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    const card = el.querySelector<HTMLElement>("[data-team-card]");
+    const step = card ? card.offsetWidth + 24 : el.clientWidth * 0.8;
+    el.scrollBy({ left: dir * step, behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    if (!active) return;
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setActive(null);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [active]);
+
+  return (
+    <section id="medical-team" className="py-24 bg-secondary/30">
+      <div className="max-w-7xl mx-auto px-5">
+        <div className="text-center mb-14 max-w-3xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground">
+            The Minds Behind the Medicine
+          </h2>
+          <p className="mt-4 text-lg md:text-lg text-muted-foreground leading-relaxed">
+            Meet the elite clinical faculty and cellular bio-therapeutic
+            pioneers directing your recovery protocols at StemPlus Tbilisi.
+          </p>
+        </div>
+
+        {/* Scrollable full team grid */}
+        <div className="relative">
+          <button
+            type="button"
+            aria-label="Previous"
+            onClick={() => scrollByDir(-1)}
+            className="hidden md:flex absolute left-0 md:-left-4 lg:-left-6 top-1/2 -translate-y-1/2 z-20 w-11 h-11 items-center justify-center rounded-full bg-white border border-border shadow-md text-foreground hover:bg-accent transition"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+          <button
+            type="button"
+            aria-label="Next"
+            onClick={() => scrollByDir(1)}
+            className="hidden md:flex absolute right-0 md:-right-4 lg:-right-6 top-1/2 -translate-y-1/2 z-20 w-11 h-11 items-center justify-center rounded-full bg-white border border-border shadow-md text-foreground hover:bg-accent transition"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+
+          <div
+            ref={scrollerRef}
+            className="flex gap-4 md:gap-6 overflow-x-auto snap-x snap-mandatory pb-4 -mx-5 px-6 md:px-5 scroll-smooth [scroll-padding-left:1.5rem] md:[scroll-padding-left:1.25rem]"
+            style={{
+              scrollbarWidth: "none",
+              msOverflowStyle: "none",
+              WebkitOverflowScrolling: "touch",
+            }}
+          >
+            {TEAM.map((m) => (
+              <article
+                key={m.name}
+                data-team-card
+                className="snap-start shrink-0 flex flex-col rounded-2xl overflow-hidden shadow-md bg-white basis-[85%] sm:basis-[60%] md:basis-[calc((100%-3rem)/3)] lg:basis-[calc((100%-4.5rem)/4)]"
+              >
+                {/* Photo section */}
+                <div className="relative h-[380px] shrink-0 bg-muted">
+                  <img
+                    src={m.img}
+                    alt={m.name}
+                    loading="lazy"
+                    decoding="async"
+                    className="absolute inset-0 w-full h-full object-cover object-top"
+                  />
+                  <div
+                    className="absolute inset-0"
+                    style={{ background: "linear-gradient(to bottom, transparent 45%, rgba(3,4,94,0.85) 100%)" }}
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 p-4">
+                    <p className="text-white font-bold text-base leading-tight">{m.name}</p>
+                    <span className="inline-block bg-[#02C39A] text-white text-[10px] font-semibold px-2 py-0.5 rounded-full mt-1">
+                      {m.role}
+                    </span>
+                    {m.badges.length > 0 && (
+                      <div className="flex flex-wrap gap-1 mt-1">
+                        {m.badges.map((b) => (
+                          <span key={b} className="bg-white/20 text-white text-[10px] font-semibold px-2 py-0.5 rounded-full">
+                            {b}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
+                {/* Bio section */}
+                <div className="p-4 flex-1 flex flex-col">
+                  <p className="text-slate-600 text-sm leading-relaxed">{m.bio[0]}</p>
+                  {(m.bio.length > 1 || m.credentials.length > 0) && (
+                    <button
+                      type="button"
+                      onClick={() => setActive(m)}
+                      className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-[#02C39A] hover:text-[#029a7a] transition-colors self-start"
+                    >
+                      Read more
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </button>
+                  )}
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Full bio modal */}
+      {active && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 backdrop-blur-sm p-4"
+          onClick={() => setActive(null)}
+          role="dialog"
+          aria-modal="true"
+        >
+          <div
+            className="relative w-full max-w-2xl max-h-[85vh] overflow-y-auto rounded-2xl bg-white shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={() => setActive(null)}
+              aria-label="Close"
+              className="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center transition"
+            >
+              <X className="w-4 h-4" />
+            </button>
+
+            <div className="flex items-center gap-4 p-6 border-b border-slate-100">
+              <img
+                src={active.img}
+                alt={active.name}
+                className="w-16 h-16 rounded-full object-cover object-top shrink-0"
+              />
+              <div>
+                <p className="font-bold text-lg text-[#03045E] leading-tight">{active.name}</p>
+                <span className="inline-block bg-[#02C39A] text-white text-xs font-semibold px-2 py-0.5 rounded-full mt-1">
+                  {active.role}
+                </span>
+              </div>
+            </div>
+
+            <div className="p-6 space-y-4">
+              {active.bio.map((paragraph, i) => (
+                <p key={i} className="text-slate-600 text-sm leading-relaxed">
+                  {paragraph}
+                </p>
+              ))}
+
+              {active.credentials.length > 0 && (
+                <div className="pt-2">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">
+                    Credentials & Training
+                  </p>
+                  <ul className="space-y-1.5">
+                    {active.credentials.map((c, i) => (
+                      <li key={i} className="flex items-start gap-2 text-sm text-slate-600">
+                        <CheckCircle2 className="w-4 h-4 text-[#02C39A] shrink-0 mt-0.5" />
+                        <span>{c}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+    </section>
+  );
+}
+
+/* ─── Footer ─── */
+function Footer() {
+  const mapSrc =
+    "https://www.google.com/maps?q=" +
+    encodeURIComponent("21 Nodar Bokhua I Ln, Tbilisi 0159, Georgia") +
+    "&output=embed";
+  return (
+    <footer className="bg-slate-950 border-t border-slate-800/60 text-slate-400">
+      <div className="max-w-6xl mx-auto px-5 py-14">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          {/* Column 1: HQ */}
+          <div>
+            <span className="text-sm uppercase tracking-wider text-slate-500 mb-3 block">
+              Corporate Headquarters
+            </span>
+            <address className="not-italic text-base leading-relaxed tracking-wide">
+              <div className="font-semibold text-slate-100">Stem Plus LLC</div>
+              <div>21 Nodar Bokhua I Ln</div>
+              <div>Tbilisi, 0159</div>
+              <div>Georgia</div>
+            </address>
+          </div>
+
+          {/* Column 2: Map */}
+          <div>
+            <span className="text-sm uppercase tracking-wider text-slate-500 mb-3 block">
+              Location
+            </span>
+            <div
+              className="rounded-xl overflow-hidden border border-slate-800"
+              style={{ height: 180 }}
+            >
+              <iframe
+                title="Stem Plus LLC location"
+                src={mapSrc}
+                width="100%"
+                height="180"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                style={{ border: 0, display: "block" }}
+              />
+            </div>
+          </div>
+
+          {/* Column 3: Contacts */}
+          <div>
+            <span className="text-sm uppercase tracking-wider text-slate-500 mb-3 block">
+              Contacts
+            </span>
+            <ul className="text-base space-y-3">
+              <li>
+                <a
+                  href="tel:+995595069069"
+                  className="inline-flex items-center gap-2 text-slate-300 transition-colors duration-200 hover:text-[#02C39A]"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 text-slate-400">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+                  </svg>
+                  +995 595 069 069
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://wa.me/995595069069"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-slate-300 transition-colors duration-200 hover:text-[#25D366]"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-[#25D366]">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                  </svg>
+                  Chat on WhatsApp
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://t.me/+995595069069"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-slate-300 transition-colors duration-200 hover:text-[#229ED9]"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-[#229ED9]">
+                    <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                  </svg>
+                  Message on Telegram
+                </a>
+              </li>
+              <li>
+                <a
+                  href="mailto:stemplusclinic@gmail.com"
+                  className="inline-flex items-center gap-2 text-slate-300 transition-colors duration-200 hover:text-[#02C39A]"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5 text-slate-400">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+                  </svg>
+                  stemplusclinic@gmail.com
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="mt-12 pt-6 border-t border-slate-900/50 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-sm text-slate-500">
+            © 2026 Stem Plus LLC. All rights reserved.
+          </p>
+          <div className="flex items-center gap-6">
+            <Link
+              to="/privacy"
+              className="text-sm text-slate-400 transition-colors duration-200 hover:text-[#02C39A]"
+            >
+              Privacy Policy
+            </Link>
+            <Link
+              to="/terms"
+              className="text-sm text-slate-400 transition-colors duration-200 hover:text-[#02C39A]"
+            >
+              Terms of Service
+            </Link>
+            <Link
+              to="/terms"
+              className="text-sm text-slate-400 transition-colors duration-200 hover:text-[#02C39A]"
+            >
+              Medical Disclaimer
+            </Link>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+/* ─── FAQ Section ─── */
+const FAQ_ITEMS = [
+  {
+    q: "What is stem cell therapy and how does it work?",
+    a: "Stem cell therapy is a regenerative medicine treatment that harnesses the body's natural repair mechanisms to address damaged tissue, chronic disease, and cellular decline. At StemPlus, we use a specific type of stem cell called Muse cells — multipotent mesenchymal stem cells sourced from GMP-certified laboratories with independently verified vitality scores above 98%. Unlike conventional stem cells, Muse cells remain active in the body for 6 months to 1 year, providing a continuous therapeutic effect with zero carcinogenic risk. These are combined with exosomes, peptides, and bioidentical implants into a personalised protocol designed around your specific diagnostic results — not a generic treatment plan.",
+  },
+  {
+    q: "What conditions do you treat?",
+    a: "StemPlus treats a broad range of conditions. Medical conditions include Type 1 and Type 2 diabetes, liver disease including fibrosis and cirrhosis, neurological and neurodegenerative diseases, stroke rehabilitation, autism spectrum disorder, autoimmune diseases, orthopedic conditions including arthritis and sports injuries, cardiac rehabilitation, erectile dysfunction and male infertility, female infertility and diminished ovarian reserve, retinopathy, and urological and gynecological conditions. On the rejuvenation side we offer comprehensive anti-aging protocols using embryonic stem cells, testosterone restoration and hormonal optimisation, and aesthetic cellular medicine including facial rejuvenation and hair restoration. Every patient is assessed individually by Dr. Yaroslav Myroshnykov before a protocol is recommended.",
+  },
+  {
+    q: "How many sessions will I need?",
+    a: "Most patients complete StemPlus's 5-day protocol at Leadermed Hospital in Tbilisi. Day 1 is a comprehensive diagnostic workup — blood panels, ultrasound, specialist consultations, and treatment plan development. Day 2 begins the primary infusion phase, a 3–4 hour intravenous procedure combined with peptides and biosimilar drugs. Day 3 includes a secondary infusion and optional cosmetic injectables. Day 4 is dynamic evaluation and treatment adjustment. Day 5 is discharge summary and follow-up milestone planning. After leaving Tbilisi, patients maintain ongoing contact with the clinical team to monitor treatment effectiveness.",
+  },
+  {
+    q: "Is stem cell therapy safe?",
+    a: "StemPlus uses only Muse cells sourced from GMP-certified laboratories, independently certified with vitality scores above 98% and tested negative for all viral and bacterial content. Every patient undergoes a full diagnostic workup before treatment begins. We physically bring your cells to you and show them before administration. Dr. Myroshnykov has over 50 published papers and 7 invention patents in cellular medicine, and our protocols are grounded in decades of peer-reviewed research originating from the Institute for Problems of Cryobiology in Kharkiv, Ukraine.",
+  },
+  {
+    q: "Is stem cell therapy experimental?",
+    a: "In some countries stem cell therapy is still classified as experimental, and we are transparent about this. At StemPlus, treatments are administered legally within Leadermed Hospital — a licensed, fully equipped multidisciplinary medical facility in Tbilisi, Georgia. The science underpinning our protocols traces back to 1972 and the Institute for Problems of Cryobiology in Kharkiv. Statistical analysis of our outcomes has demonstrated highly reliable results, including complete restoration of liver parenchyma in fibrosis and cirrhosis cases, and a 2–3 fold increase in insulin reserves in diabetic patients. We encourage all patients to consult their own physician before travelling.",
+  },
+  {
+    q: "Who are the doctors at StemPlus?",
+    a: "The StemPlus clinical team is led by three specialists. Dr. Yaroslav Myroshnykov is Chief Physician and stem cell specialist — PhD, author of over 50 published papers, holder of 7 invention patents, awarded the Young Scientist Prize by the Academy of Medical Sciences of Ukraine in 2001, and holder of an international medical practice license with clinical experience in China. Dr. Nino Kandelaki is Chief Cosmetic Dermatologist with 17 years of experience, MD and PhD with postdoctoral training, and international trainer for the Spanish brand PBSerum. Dr. Giorgi Archaia is Neurosurgeon, Neurologist and Vertebrologist with 12 years of experience, trained at Asutta Clinic in Israel and Sechenov Moscow Medical University in Russia.",
+  },
+  {
+    q: "What makes StemPlus different from other clinics?",
+    a: "Three things set StemPlus apart. First, the cells: StemPlus uses Muse cells from GMP-certified laboratories with independently verified vitality scores above 98% — not all clinics can say the same. Second, the science: our protocols are built on over 50 years of cellular research with Dr. Myroshnykov's 50+ published papers and 7 patents underpinning every treatment decision. Third, the verification: StemPlus uses evidence-based methods to measure outcomes — tissue elastography, C-peptide assessment, Anti-Müllerian Hormone testing, and neuromyography — so results are documented, not assumed.",
+  },
+  {
+    q: "Do I need a visa to visit Georgia?",
+    a: "Citizens of over 90 countries can enter Georgia visa-free, including all EU member states, the United Kingdom, the United States, Canada, Australia, and most Middle Eastern countries. Georgia has one of the most open visa policies in the world. You can verify your country's requirements at the Georgian Ministry of Foreign Affairs website before booking.",
+  },
+  {
+    q: "How do I get to Tbilisi?",
+    a: "Tbilisi International Airport connects directly to most major European cities, the Middle East, and Central Asia. Typical flight times are 3–4 hours from Western Europe, around 5 hours from the UK, and 4–5 hours from the Gulf states. From the airport, Leadermed Hospital is approximately 20–25 minutes by taxi or rideshare. We recommend the Bolt app for reliable, fairly priced airport transfers.",
+  },
+  {
+    q: "Can I combine treatment with tourism?",
+    a: "Absolutely — and most of our patients do. The StemPlus 5-day protocol leaves your evenings free, and Tbilisi rewards exploration. The city has a remarkably preserved medieval old town, world-famous sulfur baths, exceptional Georgian cuisine, and a natural wine culture that draws visitors from across Europe. Most patients arrive a day early to settle in and extend their stay after treatment.",
+  },
+  {
+    q: "What language do the doctors speak?",
+    a: "Dr. Myroshnykov and the senior clinical team are fluent in English, Russian, and Ukrainian. All consultations for international patients are conducted in English. Our patient coordination team is available in English throughout your stay — from your initial video consultation through to your departure from Tbilisi.",
+  },
+  {
+    q: "How much does stem cell therapy cost at StemPlus?",
+    a: "Treatment costs depend on your condition and the protocol Dr. Myroshnykov recommends. Your free 30-minute consultation will include a complete cost breakdown before you commit to anything. As a general guide, patients typically invest between $3,000 and $12,000 for a full 5-day protocol at Leadermed Hospital — significantly less than equivalent treatments using GMP-certified Muse cells in Germany, Switzerland, or the United States, where costs can be three to five times higher.",
+  },
+  {
+    q: "What is included in the treatment package?",
+    a: "Your StemPlus treatment package includes your full diagnostic workup on arrival — blood panels, specialist consultations, ultrasound and elastography where required — all cellular therapy sessions as prescribed, daily clinical monitoring throughout your 5-day stay, a comprehensive discharge summary with follow-up recommendations, and ongoing remote support from the clinical team after you return home. Accommodation and flights are arranged independently.",
+  },
+  {
+    q: "How do I book a consultation?",
+    a: "Click the Book Consultation button on this page. You will be asked for your name and email address, then taken directly to our scheduling calendar to choose a time that suits you. The consultation is free, takes 30 minutes, and is conducted via video call with a member of Dr. Myroshnykov's clinical team. There is no obligation to proceed.",
+  },
+];
+
+function FAQSection() {
+  const [open, setOpen] = useState<number | null>(null);
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: FAQ_ITEMS.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: { "@type": "Answer", text: item.a },
+    })),
+  };
+
+  return (
+    <section id="faq" aria-label="Frequently Asked Questions" className="py-24 bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <div className="max-w-5xl mx-auto px-5">
+        <div className="text-center mb-12">
+          <p className="text-sm font-semibold uppercase tracking-widest text-[#02C39A] mb-3">
+            Frequently Asked Questions
+          </p>
+          <h2
+            className="text-3xl sm:text-4xl font-bold tracking-tight text-[#03045E]"
+            style={{ lineHeight: "1.15" }}
+          >
+            Everything You Need to Know About Stem Cell Therapy at StemPlus
+          </h2>
+          <p className="mt-4 text-slate-500 max-w-2xl mx-auto">
+            Answers to the most common questions from international patients considering treatment in Tbilisi, Georgia.
+          </p>
+        </div>
+
+        <div className="border-t border-slate-100">
+          {FAQ_ITEMS.map((item, i) => {
+            const isOpen = open === i;
+            const qId = `faq-q-${i}`;
+            const aId = `faq-a-${i}`;
+            return (
+              <div key={i} className="border-b border-slate-100">
+                <button
+                  id={qId}
+                  aria-expanded={isOpen}
+                  aria-controls={aId}
+                  onClick={() => setOpen(isOpen ? null : i)}
+                  className="w-full flex items-center justify-between gap-4 py-5 text-left"
+                >
+                  <span className="font-semibold text-base text-[#03045E]">{item.q}</span>
+                  {isOpen
+                    ? <X className="w-5 h-5 shrink-0" style={{ color: "#02C39A" }} />
+                    : <Plus className="w-5 h-5 shrink-0" style={{ color: "#02C39A" }} />
+                  }
+                </button>
+                <div
+                  id={aId}
+                  role="region"
+                  aria-labelledby={qId}
+                  style={{
+                    maxHeight: isOpen ? "800px" : "0px",
+                    overflow: "hidden",
+                    transition: "max-height 0.35s ease",
+                  }}
+                >
+                  <p className="text-slate-600 text-sm leading-relaxed pb-5">{item.a}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── Why Tbilisi ─── */
+const TBILISI_CARDS = [
+  {
+    img: tbilisiClinic,
+    title: "World-Class Medical Infrastructure",
+    desc: "StemPlus operates exclusively within Leadermed Hospital — a modern, fully equipped multidisciplinary facility. This is not a back-street clinic.",
+  },
+  {
+    img: tbilisiCity,
+    title: "One of Europe's Most Beautiful Cities",
+    desc: "Medieval fortresses, ornate balconies, sulfur baths, and some of the warmest hospitality you'll find anywhere. Most patients extend their stay.",
+  },
+  {
+    img: tbilisiFood,
+    title: "Extraordinary Food & Culture",
+    desc: "Georgia is considered one of the world's great food cultures. Khinkali, khachapuri, natural wine — your evenings during treatment will be anything but boring.",
+  },
+  {
+    img: tbilisiAirport,
+    title: "Easier to Reach Than You Think",
+    desc: "Direct flights from most major European cities, the Middle East, and Central Asia. 3–5 hours from most of our patients' home cities.",
+  },
+];
+
+function WhyTbilisi() {
+  return (
+    <section id="why-tbilisi" className="py-24" style={{ background: "#03045E" }}>
+      <div className="max-w-5xl mx-auto px-5">
+        <div className="text-center mb-12">
+          <p className="text-base font-semibold uppercase tracking-widest text-[#02C39A] mb-3">
+            Why Tbilisi, Georgia?
+          </p>
+          <h2
+            className="text-3xl sm:text-4xl font-bold tracking-tight text-white"
+            style={{ lineHeight: "1.15" }}
+          >
+            If Georgia Isn't on Your Radar Yet, It Should Be.
+          </h2>
+          <p className="mt-4 text-base text-white/70 max-w-2xl mx-auto leading-relaxed">
+            Most patients tell us the same thing when they arrive: 'I didn't expect it to be like this.' We take that as a compliment.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-12">
+          {TBILISI_CARDS.map((card) => (
+            <div
+              key={card.title}
+              className="relative rounded-2xl overflow-hidden group"
+            >
+              <div className="h-[260px] overflow-hidden">
+                <img
+                  src={card.img}
+                  alt={card.title}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/60 to-transparent pt-12 p-5">
+                <p className="text-white font-bold text-lg leading-snug">{card.title}</p>
+                <p className="text-white/90 text-base leading-relaxed mt-1">{card.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <p className="mt-10 text-white/80 text-base italic text-center">
+          Visa-free entry for citizens of 90+ countries including the US, UK, EU, Canada, and Australia.
+        </p>
+      </div>
+    </section>
+  );
+}
+
+/* ─── Scroll reveal wrapper (animations removed) ─── */
+function ScrollReveal({
+  children,
+}: {
+  children: React.ReactNode;
+  delay?: number;
+}) {
+  return <>{children}</>;
+}
