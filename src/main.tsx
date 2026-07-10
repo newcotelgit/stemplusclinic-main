@@ -5,6 +5,9 @@ import { Toaster } from "@/components/ui/sonner";
 import Landing from "@/pages/Landing";
 import Privacy from "@/pages/Privacy";
 import Terms from "@/pages/Terms";
+import LandingAr from "@/pages/LandingAr";
+import PrivacyAr from "@/pages/PrivacyAr";
+import TermsAr from "@/pages/TermsAr";
 import "./styles.css";
 
 createRoot(document.getElementById("root")!).render(
@@ -14,6 +17,9 @@ createRoot(document.getElementById("root")!).render(
         <Route path="/" element={<Landing />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/terms" element={<Terms />} />
+        <Route path="/ar" element={<LandingAr />} />
+        <Route path="/ar/privacy" element={<PrivacyAr />} />
+        <Route path="/ar/terms" element={<TermsAr />} />
       </Routes>
       <Toaster position="top-center" />
     </BrowserRouter>

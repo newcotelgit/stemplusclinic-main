@@ -1,8 +1,10 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { applyLocale } from "@/lib/locale";
 
 export default function PrivacyPage() {
   useEffect(() => {
+    applyLocale("en");
     document.title = "Privacy Policy — Stem Plus LLC";
   }, []);
   return (

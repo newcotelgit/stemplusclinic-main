@@ -12,6 +12,7 @@ import {
   TrendingUp,
   Sparkles,
   ArrowRight,
+  ArrowLeft,
   ArrowUpRight,
   Star,
   Quote,
@@ -40,7 +41,7 @@ import {
   Plus,
   X,
 } from "lucide-react";
-import heroBg from "@/assets/hero-bg.jpg";
+import heroBg from "@/assets/hero-bg-ar.jpg";
 import heroBgMobile from "@/assets/hero-bg-mobile.jpg";
 import shadowBg from "@/assets/shadow-bg.jpg";
 import logo from "@/assets/logo.png";
@@ -71,15 +72,15 @@ import tbilisiFood from "@/assets/tbilisi-food.jpg";
 import tbilisiAirport from "@/assets/tbilisi-airport.jpg";
 import { applyLocale, setMeta } from "@/lib/locale";
 
-export default function LandingPage() {
+export default function LandingPageAr() {
   useEffect(() => {
-    applyLocale("en");
+    applyLocale("ar");
     setMeta({
-      title: "StemPlus Tbilisi — Stem Cell Therapy in Georgia",
+      title: "ستيم بلس تبليسي — العلاج بالخلايا الجذعية في جورجيا",
       description:
-        "StemPlus is a stem cell therapy clinic in Tbilisi, Georgia. Treatments for diabetes, neurological conditions, autism, erectile dysfunction, anti-aging and more. Free 30-minute consultation with Dr. Yaroslav Myroshnykov.",
-      ogLocale: "en_GB",
-      canonical: "https://www.stemplusclinic.com/",
+        "ستيم بلس عيادة للعلاج بالخلايا الجذعية في تبليسي، جورجيا. علاجات لمرض السكري والحالات العصبية والتوحد وضعف الانتصاب ومكافحة الشيخوخة وأكثر. استشارة مجانية لمدة 30 دقيقة مع الدكتور ياروسلاف ميروشنيكوف.",
+      ogLocale: "ar_AR",
+      canonical: "https://www.stemplusclinic.com/ar",
     });
   }, []);
   return (
@@ -116,7 +117,7 @@ const VIDEO_TESTIMONIALS: VideoItem[] = [
     src: "https://player.vimeo.com/video/1206930951",
     poster: markLattaThumbnail,
     name: "Mark Latta",
-    treatment: "Stem Cell Therapy",
+    treatment: "العلاج بالخلايا الجذعية",
     country: "Sarasota, Florida, USA",
     flag: "🇺🇸",
   },
@@ -125,7 +126,7 @@ const VIDEO_TESTIMONIALS: VideoItem[] = [
     src: "https://player.vimeo.com/video/1206931316",
     poster: aliceThumbnail,
     name: "Alice",
-    treatment: "Stem Cell Therapy",
+    treatment: "العلاج بالخلايا الجذعية",
     country: "Bournemouth, UK",
     flag: "🇬🇧",
   },
@@ -147,7 +148,7 @@ function VideoCard({
       type="button"
       onClick={() => onPlay(item)}
       className={`group relative block w-full overflow-hidden rounded-2xl bg-black border border-black/[0.06] shadow-lg text-left ${className}`}
-      aria-label={`Play video testimonial from ${item.name}`}
+      aria-label={`تشغيل شهادة فيديو من ${item.name}`}
     >
       <img
         src={item.poster}
@@ -225,13 +226,13 @@ function VideoTestimonial() {
       <div className="max-w-6xl mx-auto px-5">
         <div className="text-center mb-10">
           <p className="text-sm font-semibold uppercase tracking-widest text-primary mb-3">
-            Testimonials
+            الشهادات
           </p>
           <h2
             className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground"
             style={{ lineHeight: "1.15" }}
           >
-            Hear it from our patients
+            استمع إلى تجارب مرضانا
           </h2>
         </div>
 
@@ -262,7 +263,7 @@ function VideoTestimonial() {
                 type="button"
                 onClick={() => goTo(i)}
                 className={`w-2 h-2 rounded-full transition-all duration-300 ${i === index ? "bg-primary w-5" : "bg-slate-300 hover:bg-slate-400"}`}
-                aria-label={`Go to video ${i + 1}`}
+                aria-label={`الانتقال إلى الفيديو ${i + 1}`}
               />
             ))}
           </div>
@@ -281,7 +282,7 @@ function VideoTestimonial() {
             type="button"
             onClick={() => setActive(null)}
             className="absolute top-5 right-5 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition"
-            aria-label="Close video"
+            aria-label="إغلاق الفيديو"
           >
             <svg
               viewBox="0 0 24 24"
@@ -328,23 +329,23 @@ function VideoTestimonial() {
 const milestones = [
   {
     year: "1972",
-    title: "The Foundation of Cellular Therapy",
-    body: "Our scientific heritage begins in Kharkiv, Ukraine, with the establishment of the historic Institute for Problems of Cryobiology and Cryomedicine under the leadership of Academician V.I. Gryshchenko, pioneering global research into the safety and application of stem cells.",
+    title: "تأسيس العلاج الخلوي",
+    body: "يبدأ إرثنا العلمي في خاركيف، أوكرانيا، بتأسيس المعهد التاريخي لمشكلات علم الأحياء البردي والطب البردي بقيادة الأكاديمي ف. إ. غريشتشينكو، رائدًا الأبحاث العالمية حول سلامة الخلايا الجذعية وتطبيقاتها.",
   },
   {
     year: "2006",
-    title: "Clinical Expansion & Leadership",
-    body: "Building upon these foundational academic breakthroughs, Dr. Yaroslav Myroshnykov serves as the founder and head of the prominent Kyiv branch network, later transitioning to serve as a leading researcher at the Transplant Coordination Center of the Ministry of Health of Ukraine.",
+    title: "التوسع السريري والقيادة",
+    body: "استنادًا إلى هذه الإنجازات الأكاديمية التأسيسية، شغل الدكتور ياروسلاف ميروشنيكوف منصب المؤسس ورئيس شبكة فرع كييف البارزة، ثم انتقل ليعمل كباحث رئيسي في مركز تنسيق زراعة الأعضاء التابع لوزارة الصحة الأوكرانية.",
   },
   {
     year: "2022–2024",
-    title: "European Relocation & Adaptation",
-    body: "Due to military actions in Ukraine, our elite medical team successfully relocated clinical operations internationally—deploying specialized cellular therapy projects across premium medical clinics in Batumi, Georgia and Plovdiv, Bulgaria.",
+    title: "الانتقال إلى أوروبا والتكيف",
+    body: "بسبب الأعمال العسكرية في أوكرانيا، نجح فريقنا الطبي النخبوي في نقل العمليات السريرية دوليًا — حيث نفذ مشاريع علاج خلوي متخصصة عبر عيادات طبية متميزة في باتومي، جورجيا، وبلوفديف، بلغاريا.",
   },
   {
-    year: "Present Day",
-    title: "The Launch of StemPlus Tbilisi",
-    body: "Today, this fruitful Georgian-Ukrainian cooperation comes together permanently in the heart of Georgia. Led by Dr. Myroshnykov, our staff operates exclusively out of the modern, multidisciplinary Leadermed Hospital in Tbilisi, utilizing the newest diagnostic and therapeutic equipment available in modern regenerative medicine.",
+    year: "الوقت الحاضر",
+    title: "إطلاق ستيم بلس تبليسي",
+    body: "اليوم، يجتمع هذا التعاون الجورجي-الأوكراني المثمر بشكل دائم في قلب جورجيا. بقيادة الدكتور ميروشنيكوف، يعمل طاقمنا حصريًا من مستشفى ليدرميد الحديث متعدد التخصصات في تبليسي، مستخدمين أحدث المعدات التشخيصية والعلاجية المتوفرة في الطب التجديدي الحديث.",
   },
 ];
 
@@ -352,52 +353,50 @@ function Heritage() {
   return (
     <section id="heritage" className="py-24 bg-white">
       <div className="max-w-6xl mx-auto px-5">
-        <div className="text-center lg:text-left mb-14">
+        <div className="text-center lg:text-right mb-14">
           <p className="text-sm font-semibold uppercase tracking-widest text-[#FDAA3E] mb-3">
-            Our Heritage
+            إرثنا
           </p>
           <h2
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 max-w-3xl"
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 max-w-3xl lg:mr-0 lg:ml-auto"
             style={{ lineHeight: "1.1" }}
           >
-            The StemPlus Legacy:
+            إرث ستيم بلس:
             <br />
-            Bridging Decades of Cellular Science
+            جسر بين عقود من علوم الخلايا
           </h2>
         </div>
 
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          {/* Left: Credo */}
+          {/* Credo (appears on the right in RTL) */}
           <div className="lg:col-span-5 lg:sticky lg:top-24">
             <div className="relative">
-              <span className="absolute -left-3 top-0 h-full w-[3px] bg-[#FDAA3E] rounded-full hidden lg:block" />
+              <span className="absolute -right-3 top-0 h-full w-[3px] bg-[#FDAA3E] rounded-full hidden lg:block" />
               <p
-                className="text-xl sm:text-2xl font-medium text-slate-900 leading-relaxed lg:pl-6"
+                className="text-xl sm:text-2xl font-medium text-slate-900 leading-relaxed lg:pr-6"
                 style={{ textWrap: "pretty" }}
               >
-                StemPlus is not just a modern treatment center; it is the
-                culmination of over{" "}
+                ستيم بلس ليس مجرد مركز علاجي حديث؛ بل هو ثمرة أكثر من{" "}
                 <span className="text-[#FDAA3E] font-semibold">
-                  50 years of pioneering research
+                  50 عامًا من الأبحاث الرائدة
                 </span>{" "}
-                in cryobiology and cellular medicine.
+                في علم الأحياء البردي والطب الخلوي.
               </p>
-              <p className="mt-5 text-lg text-slate-600 leading-relaxed lg:pl-6">
-                By combining historic Ukrainian scientific breakthroughs with a
-                state-of-the-art multidisciplinary hospital environment in
-                Tbilisi, Georgia, we provide patients with an unmatched gateway
-                to elite, evidence-based regenerative recovery.
+              <p className="mt-5 text-lg text-slate-600 leading-relaxed lg:pr-6">
+                من خلال الجمع بين الإنجازات العلمية الأوكرانية التاريخية وبيئة
+                مستشفى متعدد التخصصات وحديث في تبليسي، جورجيا، نوفر للمرضى
+                بوابة لا مثيل لها للتعافي التجديدي النخبوي القائم على الأدلة.
               </p>
             </div>
           </div>
 
-          {/* Right: Timeline */}
+          {/* Timeline (appears on the left in RTL) */}
           <div className="lg:col-span-7 relative">
-            <div className="absolute left-[11px] top-2 bottom-2 w-[2px] bg-gradient-to-b from-[#FDAA3E]/40 via-[#FDAA3E]/60 to-[#FDAA3E]/20" />
+            <div className="absolute right-[11px] top-2 bottom-2 w-[2px] bg-gradient-to-b from-[#FDAA3E]/40 via-[#FDAA3E]/60 to-[#FDAA3E]/20" />
             <ol className="space-y-10">
               {milestones.map((m) => (
-                <li key={m.year} className="relative pl-10">
-                  <span className="absolute left-0 top-1.5 w-6 h-6 rounded-full bg-[#FDAA3E] ring-4 ring-white shadow-md shadow-[#FDAA3E]/30 flex items-center justify-center">
+                <li key={m.year} className="relative pr-10">
+                  <span className="absolute right-0 top-1.5 w-6 h-6 rounded-full bg-[#FDAA3E] ring-4 ring-white shadow-md shadow-[#FDAA3E]/30 flex items-center justify-center">
                     <span className="w-1.5 h-1.5 rounded-full bg-white" />
                   </span>
                   <p className="text-sm font-bold uppercase tracking-widest text-[#FDAA3E] mb-1">
@@ -420,10 +419,10 @@ function Heritage() {
 }
 
 const NAV_LINKS = [
-  { label: "Testimonials", href: "#video-testimonials" },
-  { label: "Treatments", href: "#treatments" },
-  { label: "Medical Team", href: "#medical-team" },
-  { label: "FAQ", href: "#faq" },
+  { label: "الشهادات", href: "#video-testimonials" },
+  { label: "العلاجات", href: "#treatments" },
+  { label: "الفريق الطبي", href: "#medical-team" },
+  { label: "الأسئلة الشائعة", href: "#faq" },
 ];
 
 function Header() {
@@ -464,7 +463,7 @@ function Header() {
     <>
     <header className="sticky top-0 left-0 right-0 z-50 w-full bg-slate-950/80 backdrop-blur-md border-b border-slate-800/40">
       <nav className="max-w-7xl mx-auto px-5 h-16 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2.5 shrink-0">
+        <Link to="/ar" className="flex items-center gap-2.5 shrink-0">
           <img
             src={logo}
             alt="Continuum"
@@ -485,17 +484,17 @@ function Header() {
             </a>
           ))}
           <Link
-            to="/ar"
+            to="/"
             className="text-sm font-semibold border border-slate-700 rounded-full px-3 py-1 text-slate-300 transition-colors duration-200 hover:text-[#00A896] hover:border-[#00A896]"
           >
-            العربية
+            EN
           </Link>
         </div>
 
         <div className="flex items-center gap-3">
           <button
             type="button"
-            aria-label="Open menu"
+            aria-label="فتح القائمة"
             onClick={() => setOpen(true)}
             className="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg text-white hover:bg-white/10 transition-colors"
           >
@@ -529,15 +528,15 @@ function Header() {
           onClick={() => setOpen(false)}
         />
         <div
-          className={`absolute top-0 right-0 h-full w-[82%] max-w-sm backdrop-blur-md border-l border-slate-800/60 shadow-2xl transition-transform duration-300 ${
-            open ? "translate-x-0" : "translate-x-full"
+          className={`absolute top-0 left-0 h-full w-[82%] max-w-sm backdrop-blur-md border-r border-slate-800/60 shadow-2xl transition-transform duration-300 ${
+            open ? "translate-x-0" : "-translate-x-full"
           }`}
           style={{ backgroundColor: "rgba(2, 6, 23, 0.5)" }}
         >
           <div className="flex items-center justify-end h-16 px-5 border-b border-slate-800/60">
             <button
               type="button"
-              aria-label="Close menu"
+              aria-label="إغلاق القائمة"
               onClick={() => setOpen(false)}
               className="inline-flex items-center justify-center w-10 h-10 rounded-lg text-white hover:bg-white/10 transition-colors"
             >
@@ -568,11 +567,11 @@ function Header() {
               </a>
             ))}
             <Link
-              to="/ar"
+              to="/"
               onClick={() => setOpen(false)}
               className="mt-4 pt-4 border-t border-slate-700/60 text-lg font-semibold text-slate-300 drop-shadow-[0_2px_6px_rgba(0,0,0,0.75)] hover:text-[#00A896] transition-colors"
             >
-              العربية (AR)
+              English (EN)
             </Link>
           </nav>
         </div>
@@ -606,11 +605,11 @@ function Hero() {
           className="block sm:hidden absolute inset-0 w-full h-full object-cover object-center pointer-events-none select-none"
           aria-hidden="true"
         />
-        {/* Left-side gradient for text legibility */}
+        {/* Right-side gradient for text legibility (RTL) */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
-            background: `linear-gradient(to right, rgba(5,13,10,0.5), rgba(5,13,10,0.13), transparent)`,
+            background: `linear-gradient(to left, rgba(5,13,10,0.5), rgba(5,13,10,0.13), transparent)`,
           }}
         />
         <div
@@ -622,24 +621,24 @@ function Hero() {
 
         {/* Hero content — left aligned */}
         <div className="relative z-10 max-w-5xl mx-auto px-5 pt-8 sm:pt-24 pb-12 flex flex-col sm:block min-h-[85vh] sm:min-h-0">
-          <div className="w-full sm:max-w-[45%] flex flex-col flex-1 sm:block">
+          <div className="w-full sm:max-w-[45%] sm:ml-auto flex flex-col flex-1 sm:block">
             {/* H1 + subheadline — always together at top */}
             <div>
               <ScrollReveal delay={80}>
                 <h1
-                  className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white text-left"
+                  className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white text-right"
                   style={{ lineHeight: "1.08" }}
                 >
-                  Stem Cell Therapy<br className="block sm:hidden" /> That Actually Works
+                  علاج بالخلايا الجذعية<br className="block sm:hidden" /> يحقق نتائج فعلية
                 </h1>
               </ScrollReveal>
 
               <ScrollReveal delay={160}>
                 <p
-                  className="mt-6 text-lg text-white text-left"
+                  className="mt-6 text-lg text-white text-right"
                   style={{ textWrap: "pretty", lineHeight: "1.6" }}
                 >
-                  Combining 50 years of cellular science with elite medical care — for serious conditions and long-term vitality.
+                  نجمع بين 50 عامًا من علوم الخلايا والرعاية الطبية النخبوية — لعلاج الحالات الخطيرة وتحقيق حيوية طويلة الأمد.
                 </p>
               </ScrollReveal>
             </div>
@@ -649,9 +648,9 @@ function Hero() {
               <ScrollReveal delay={240}>
                 <div className="flex flex-col gap-3">
                   {[
-                    "50+ years of cellular research",
-                    "GMP-certified biological materials",
-                    "Evidence-based outcome verification",
+                    "أكثر من 50 عامًا من الأبحاث الخلوية",
+                    "مواد بيولوجية معتمدة وفق معايير GMP",
+                    "التحقق من النتائج بناءً على الأدلة العلمية",
                   ].map((item) => (
                     <span key={item} className="flex items-center gap-2 text-base text-white/90 leading-none">
                       <CheckCircle2 className="w-4 h-4 shrink-0" style={{ color: "#02C39A" }} />
@@ -704,44 +703,44 @@ const features = [
 
 const treatCards = [
   {
-    title: "Erectile Dysfunction & Urological Recovery",
-    desc: "Advanced cellular therapies targeted at restoring vascular integrity, improving blood flow, and optimizing sexual health function.",
+    title: "ضعف الانتصاب والتعافي البولي",
+    desc: "علاجات خلوية متقدمة تستهدف استعادة سلامة الأوعية الدموية، وتحسين تدفق الدم، وتحسين وظيفة الصحة الجنسية.",
     Icon: ShieldCheck,
     color: "#03045E",
   },
   {
-    title: "Neurology & Stroke Recovery",
-    desc: "Cellular protocols designed for structural neurological support, cognitive optimization, and post-stroke rehabilitation.",
+    title: "الأعصاب والتعافي من السكتة الدماغية",
+    desc: "بروتوكولات خلوية مصممة للدعم العصبي الهيكلي، وتحسين الإدراك، وإعادة التأهيل بعد السكتة الدماغية.",
     Icon: Brain,
     color: "#03045E",
   },
   {
-    title: "Autism Spectrum Protocols",
-    desc: "Specialized bio-therapeutic routing focused on pediatric neuro-developmental support and childhood cellular optimization.",
+    title: "بروتوكولات طيف التوحد",
+    desc: "توجيه علاجي حيوي متخصص يركز على الدعم العصبي التطوري للأطفال وتحسين الخلايا في مرحلة الطفولة.",
     Icon: Activity,
     color: "#02C39A",
   },
   {
-    title: "Autoimmune & Systemic Renewal Protocols",
-    desc: "Targeted immune-modulation and post-traumatic recovery therapies addressing complex inflammation, Crohn's disease, and full-body tissue repair.",
+    title: "بروتوكولات المناعة الذاتية والتجديد الجهازي",
+    desc: "علاجات مستهدفة لتعديل المناعة والتعافي بعد الصدمات لمعالجة الالتهابات المعقدة، ومرض كرون، وإصلاح الأنسجة الشامل.",
     Icon: ShieldAlert,
     color: "#00A896",
   },
   {
-    title: "Cellular Rejuvenation & Longevity",
-    desc: "Advanced tissue renewal and systemic anti-aging protocols engineered for international health tourists.",
+    title: "التجديد الخلوي وطول العمر",
+    desc: "بروتوكولات متقدمة لتجديد الأنسجة ومكافحة الشيخوخة الجهازية مصممة خصيصًا للسياح الصحيين الدوليين.",
     Icon: Heart,
     color: "#02C39A",
   },
   {
-    title: "Diabetes & Metabolic Repair",
-    desc: "Comprehensive metabolic routing focused on advanced glucose regulation and systematic endocrine support.",
+    title: "السكري وإصلاح التمثيل الغذائي",
+    desc: "توجيه أيضي شامل يركز على التنظيم المتقدم لمستوى الجلوكوز والدعم الغدد الصماء المنهجي.",
     Icon: RefreshCw,
     color: "#03045E",
   },
   {
-    title: "Orthopedic Spine & Joint Regeneration",
-    desc: "Advanced biomaterial targeting aimed at restoring joint mobility and supporting complex spinal recovery.",
+    title: "تجديد العمود الفقري والمفاصل",
+    desc: "استهداف بمواد حيوية متقدمة يهدف إلى استعادة حركة المفاصل ودعم التعافي المعقد للعمود الفقري.",
     Icon: Flame,
     color: "#00A896",
   },
@@ -757,11 +756,10 @@ function Features() {
               className="text-3xl sm:text-4xl font-bold tracking-tight text-[#03045E]"
               style={{ lineHeight: "1.15" }}
             >
-              What we treat
+              ما الذي نعالجه
             </h2>
             <p className="mt-4 text-lg text-slate-500">
-              Targeted regenerative therapies for cellular optimization, chronic
-              recovery, and functional vitality.
+              علاجات تجديدية مستهدفة لتحسين الخلايا، والتعافي من الحالات المزمنة، والحيوية الوظيفية.
             </p>
           </div>
         </ScrollReveal>
@@ -779,8 +777,8 @@ function Features() {
                 <p className="text-base text-slate-600 leading-relaxed">
                   {c.desc}
                 </p>
-                <span className="absolute bottom-5 right-6 text-sm font-medium text-slate-400 transition-all duration-300 group-hover:text-[#02C39A] group-hover:translate-x-1">
-                  Learn more →
+                <span className="absolute bottom-5 left-6 text-sm font-medium text-slate-400 transition-all duration-300 group-hover:text-[#02C39A] group-hover:-translate-x-1">
+                  اعرف المزيد ←
                 </span>
               </div>
             </ScrollReveal>
@@ -794,53 +792,53 @@ function Features() {
 /* ─── 5-Day Treatment Process Timeline ─── */
 const treatmentDays = [
   {
-    day: "Day 1",
+    day: "اليوم 1",
     icon: ClipboardList,
-    title: "Comprehensive Diagnostics & Intake",
+    title: "التشخيص الشامل والاستقبال",
     points: [
-      "Multi-specialty clinical physician consultation and detailed medical history mapping",
-      "Baseline clinical diagnostic blood draw and targeted ultrasound mapping",
-      "Individualized cellular therapeutic plan formulation matching patient metrics",
+      "استشارة طبية متعددة التخصصات ورسم تفصيلي للتاريخ الطبي",
+      "سحب دم تشخيصي أساسي وتصوير بالموجات فوق الصوتية مستهدف",
+      "صياغة خطة علاجية خلوية فردية تتناسب مع مؤشرات المريض",
     ],
   },
   {
-    day: "Day 2",
+    day: "اليوم 2",
     icon: Syringe,
-    title: "Primary Laboratory Infusion Phase",
+    title: "مرحلة التسريب المخبري الأولي",
     points: [
-      "Initiation of primary laboratory-certified embryonic stem cell and exosome infusion (3-4 hour duration)",
-      "Administration of specialized regulatory peptides to target and optimize metabolic function",
-      "Implementation of baseline bioidentical protocols",
+      "بدء التسريب الأولي المعتمد مخبريًا للخلايا الجذعية الجنينية والإكسوسومات (يستغرق 3-4 ساعات)",
+      "إعطاء ببتيدات تنظيمية متخصصة لاستهداف وتحسين وظيفة التمثيل الغذائي",
+      "تنفيذ بروتوكولات حيوية مطابقة أساسية",
     ],
   },
   {
-    day: "Day 3",
+    day: "اليوم 3",
     icon: Sparkles,
-    title: "Secondary Administration & Targeted Aesthetics",
+    title: "الإعطاء الثانوي والتجميل المستهدف",
     points: [
-      "Secondary targeted cell and exosome booster infusion procedures",
-      "Optional integration of localized cosmetic cell injectables or tissue therapies",
-      "Optional medical massage therapy to maximize global circulatory uptake",
+      "إجراءات تعزيز ثانوية مستهدفة بالخلايا والإكسوسومات",
+      "دمج اختياري لحقن الخلايا التجميلية الموضعية أو علاجات الأنسجة",
+      "علاج تدليك طبي اختياري لتعظيم الامتصاص الدوري الشامل",
     ],
   },
   {
-    day: "Day 4",
+    day: "اليوم 4",
     icon: Activity,
-    title: "Dynamic Evaluation & Sensitivity Mapping",
+    title: "التقييم الديناميكي ورسم خريطة الحساسية",
     points: [
-      "Comprehensive assessment of early dynamic changes in nervous system signaling",
-      "Precise pallesthesiometry testing to map changes in nerve conduction and localized sensitivity",
-      "Precision clinical data capture to cross-reference baseline metrics",
+      "تقييم شامل للتغيرات الديناميكية المبكرة في إشارات الجهاز العصبي",
+      "اختبار دقيق لقياس الإحساس بالاهتزاز لرسم خريطة التغيرات في التوصيل العصبي والحساسية الموضعية",
+      "التقاط بيانات سريرية دقيقة لمقارنتها بالمؤشرات الأساسية",
     ],
   },
   {
-    day: "Day 5",
+    day: "اليوم 5",
     icon: ShieldCheck,
-    title: "Discharge Summary & Follow-Up Milestone Layout",
+    title: "ملخص الخروج وتخطيط معالم المتابعة",
     points: [
-      "Final multi-specialty clinical team panel evaluation and recovery summary",
-      "Prescription formulation for long-term supportive home care, peptides, or bioidentical tools",
-      "Structured layout of post-discharge remote monitoring checkpoints and follow-up milestones",
+      "تقييم نهائي من فريق طبي متعدد التخصصات وملخص التعافي",
+      "صياغة وصفة طبية للرعاية المنزلية الداعمة طويلة الأمد، أو الببتيدات، أو الأدوات الحيوية المطابقة",
+      "تخطيط منظم لنقاط المراقبة عن بعد بعد الخروج ومعالم المتابعة",
     ],
   },
 ];
@@ -852,17 +850,16 @@ function HowItWorks() {
         <ScrollReveal>
           <div className="text-center mb-16">
             <p className="text-sm font-semibold uppercase tracking-widest text-[#FDAA3E] mb-3">
-              Treatment Process
+              عملية العلاج
             </p>
             <h2
               className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900"
               style={{ lineHeight: "1.15" }}
             >
-              Five Steps to Your Recovery
+              خمس خطوات نحو تعافيك
             </h2>
             <p className="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">
-              A precision-guided 5-day clinical protocol — engineered for
-              measurable regeneration and lasting recovery.
+              بروتوكول سريري دقيق مدته 5 أيام — مصمم لتحقيق تجديد قابل للقياس وتعافٍ دائم.
             </p>
           </div>
         </ScrollReveal>
@@ -906,7 +903,7 @@ function HowItWorks() {
 
         {/* Mobile/Tablet: vertical timeline */}
         <div className="lg:hidden relative space-y-6">
-          <div className="absolute left-7 top-4 bottom-4 w-[2px] bg-gradient-to-b from-[#FDAA3E]/30 via-[#FDAA3E] to-[#FDAA3E]/30" />
+          <div className="absolute right-7 top-4 bottom-4 w-[2px] bg-gradient-to-b from-[#FDAA3E]/30 via-[#FDAA3E] to-[#FDAA3E]/30" />
           {treatmentDays.map((d, i) => (
             <ScrollReveal key={d.day} delay={i * 70}>
               <div className="relative flex gap-5 items-start">
@@ -946,135 +943,136 @@ const successStories = [
   {
     kind: "image" as const,
     image: patient10,
-    badge: "NEUROLOGICAL STABILIZATION & RECOVERY",
-    text: "I highly value the absolute therapeutic transparency and comprehensive approach provided by the medical staff. Every action, step, and diagnostic verification was detailed to me with total clarity. I felt notable structural benefits and an energetic surge within just 4 days of cellular care.",
-    author: "Female Patient",
-    location: "Eastern Europe",
+    badge: "استقرار وتعافٍ عصبي",
+    text: "أقدّر بشدة الشفافية العلاجية المطلقة والنهج الشامل الذي قدمه الطاقم الطبي. تم شرح كل إجراء وخطوة وتحقق تشخيصي لي بوضوح تام. شعرت بفوائد هيكلية ملحوظة وارتفاع في الطاقة خلال 4 أيام فقط من الرعاية الخلوية.",
+    author: "مريضة",
+    location: "أوروبا الشرقية",
+    flag: "🇪🇺",
   },
   {
     kind: "image" as const,
     image: patient2,
-    badge: "PEDIATRIC AUTISM NEUROREHABILITATION",
-    text: "We traveled from Al Ain for my son Muhammad's Autism care. The clinic handled everything seamlessly, from airport arrival to daily transport. Over a targeted 3-day cellular infusion program, we witnessed immediate behavioral breakthroughs—Muhammad's severe sleep irregularity has completely resolved, and he is now sleeping deeply and calmly.",
-    author: "Muhammad's Father",
-    location: "United Arab Emirates",
+    badge: "إعادة التأهيل العصبي للتوحد لدى الأطفال",
+    text: "سافرنا من العين لعلاج التوحد لدى ابني محمد. تعاملت العيادة مع كل شيء بسلاسة، من الوصول إلى المطار وحتى النقل اليومي. خلال برنامج تسريب خلوي مستهدف لمدة 3 أيام، شهدنا اختراقات سلوكية فورية — لقد اختفى اضطراب النوم الشديد لدى محمد تمامًا، وهو الآن ينام بعمق وهدوء.",
+    author: "والد محمد",
+    location: "الإمارات العربية المتحدة",
+    flag: "🇦🇪",
   },
   {
     kind: "image" as const,
     image: patient3,
-    badge: "POST-STROKE HEMIPLEGIA RECOVERY",
-    text: "Three and a half years ago, a stroke left me with severe hemiplegia and motor paralysis across half of my body. After arriving at StemPlus Tbilisi, I received targeted intravenous, intrathecal, and endonasal embryonic stem cell and placental infusions. The clinical results have been profound—I am experiencing a step-by-step return of physical motor control and tactile sensation.",
-    author: "Kamil Kamshad",
-    location: "Iraq",
+    badge: "التعافي من الشلل النصفي بعد السكتة الدماغية",
+    text: "منذ ثلاث سنوات ونصف، تسببت لي سكتة دماغية بشلل نصفي شديد وشلل حركي في نصف جسدي. بعد وصولي إلى ستيم بلس تبليسي، تلقيت تسريبات مستهدفة وريدية وداخل القراب وعبر الأنف من الخلايا الجذعية الجنينية والمشيمة. كانت النتائج السريرية عميقة — أشهد استعادة تدريجية للتحكم الحركي الجسدي والإحساس اللمسي.",
+    author: "كامل كامشاد",
+    location: "العراق",
+    flag: "🇮🇶",
   },
   {
     kind: "image" as const,
     image: patient4,
-    badge: "CHRONIC CROHN'S DISEASE PROTOCOL",
-    text: "As a Crohn's disease patient for over 20 years, I spent the last five years in absolute agony, undergoing two unsuccessful operations. After a friend recommended this team, I traveled to the clinic for specialized stem cell therapy. Within just the first five days of my personalized biological care, my localized pain began to drastically subside and my baseline physical energy levels surged.",
-    author: "Mustafa",
-    location: "Chronic Crohn's Patient",
+    badge: "بروتوكول مرض كرون المزمن",
+    text: "بصفتي مريضًا بمرض كرون منذ أكثر من 20 عامًا، أمضيت السنوات الخمس الماضية في عذاب مطلق، وخضعت لعمليتين جراحيتين فاشلتين. بعد أن أوصاني صديق بهذا الفريق، سافرت إلى العيادة للحصول على علاج متخصص بالخلايا الجذعية. خلال الأيام الخمسة الأولى فقط من رعايتي البيولوجية الشخصية، بدأ ألمي الموضعي في التراجع بشكل كبير وارتفعت مستويات طاقتي الجسدية الأساسية.",
+    author: "مصطفى",
+    location: "مريض كرون المزمن",
+    flag: "🌍",
   },
   {
     kind: "image" as const,
     image: patient5,
-    badge: "MULTI-TARGET SYSTEMIC REJUVENATION",
-    text: "I came to Tbilisi for a multi-target therapy focused on systematic anti-aging and rejuvenation. The medical staff explained every diagnostic action with total transparency, removing all my anxiety. Over a 5-day custom treatment plan covering my face, neck, and abdomen, my physical vitality skyrocketed, my skin looks noticeably regenerated, and my chronic back and waist soreness completely vanished.",
-    author: "International Patient",
-    location: "China",
+    badge: "التجديد الجهازي متعدد الأهداف",
+    text: "أتيت إلى تبليسي لعلاج متعدد الأهداف يركز على مكافحة الشيخوخة الجهازية والتجديد. شرح الطاقم الطبي كل إجراء تشخيصي بشفافية تامة، مما أزال كل قلقي. خلال خطة علاج مخصصة لمدة 5 أيام شملت وجهي ورقبتي وبطني، ارتفعت حيويتي الجسدية بشكل كبير، وبدت بشرتي متجددة بشكل ملحوظ، واختفى ألم ظهري وخصري المزمن تمامًا.",
+    author: "مريض دولي",
+    location: "الصين",
+    flag: "🇨🇳",
   },
   {
     kind: "image" as const,
     image: patient6,
-    badge: "AUTISM SPECTRUM COGNITIVE DEVELOPMENT",
-    text: "This is our second time trusting this elite medical team with my son Seif's neurorehabilitation for Autism. The custom cellular therapy, combined with the clinic's exceptionally organized, clean, and deeply supportive multidisciplinary hospital environment in Tbilisi, gives us immense confidence in his continuous cognitive progress.",
-    author: "Seif's Father",
-    location: "Saudi Arabia",
+    badge: "التطور الإدراكي لطيف التوحد",
+    text: "هذه هي المرة الثانية التي نثق فيها بهذا الفريق الطبي النخبوي لإعادة التأهيل العصبي لابني سيف المصاب بالتوحد. العلاج الخلوي المخصص، إلى جانب بيئة المستشفى المتعددة التخصصات في تبليسي المنظمة بشكل استثنائي والنظيفة والداعمة بعمق، يمنحنا ثقة هائلة في تقدمه الإدراكي المستمر.",
+    author: "والد سيف",
+    location: "المملكة العربية السعودية",
+    flag: "🇸🇦",
   },
   {
     kind: "image" as const,
     image: patient7,
-    badge: "CHRONIC ORGAN REPAIR & METABOLIC SYSTEMS",
-    text: "The clinic's medical coordination work is beautiful and highly authoritative. I have been following this specific medical team since their initial practice back in Ukraine, and now in Tbilisi, their execution is flawless. For anyone looking for cutting-edge solutions for complex internal organs or advanced metabolic conditions, I can verify their protocols are elite.",
-    author: "Verified Clinic Reviewer",
-    location: "Gulf Region",
+    badge: "إصلاح الأعضاء المزمن وأنظمة التمثيل الغذائي",
+    text: "عمل التنسيق الطبي للعيادة رائع وذو مصداقية عالية. لقد كنت أتابع هذا الفريق الطبي بالتحديد منذ ممارسته الأولية في أوكرانيا، والآن في تبليسي، تنفيذهم لا تشوبه شائبة. لكل من يبحث عن حلول متطورة للأعضاء الداخلية المعقدة أو الحالات الأيضية المتقدمة، يمكنني التأكيد على أن بروتوكولاتهم نخبوية.",
+    author: "مراجع موثّق للعيادة",
+    location: "منطقة الخليج",
+    flag: "🇦🇪",
   },
   {
     kind: "image" as const,
     image: patient8,
-    badge: "SYSTEMIC ANTI-AGING & CELL VITALIZATION",
-    text: "I traveled from Mersin for a multi-day cellular anti-aging and total system vitalization plan. Within 6 to 7 days of precise cellular care under Dr. Yaroslav, I feel completely transformed. I am experiencing a massive surge in physical energy, youthful skin regeneration, and total systemic optimization. The clinical execution here is perfect.",
-    author: "Anti-Aging Patient",
-    location: "Turkey",
+    badge: "مكافحة الشيخوخة الجهازية وتنشيط الخلايا",
+    text: "سافرت من مرسين لخطة علاج خلوي متعددة الأيام لمكافحة الشيخوخة وتنشيط النظام الكلي. خلال 6 إلى 7 أيام من الرعاية الخلوية الدقيقة تحت إشراف الدكتور ياروسلاف، أشعر بتحول كامل. أعاني من ارتفاع هائل في الطاقة الجسدية، وتجدد شبابي للبشرة، وتحسين جهازي كامل. التنفيذ السريري هنا مثالي.",
+    author: "مريض مكافحة الشيخوخة",
+    location: "تركيا",
+    flag: "🇹🇷",
   },
   {
     kind: "image" as const,
     image: patient9,
-    badge: "AUTISM SPECTRUM COORDINATED RECOVERY",
-    text: "The care and absolute clarity of the consultation process here is remarkable. From the moment we touched down at the airport, the coordination team handled every logistic with incredible support. This thorough care has given us immense hope and security regarding our young son's continuous cognitive and socialization tracking plans.",
-    author: "Pediatric Care Parent",
-    location: "United Arab Emirates",
+    badge: "التعافي المنسق لطيف التوحد",
+    text: "الرعاية والوضوح المطلق لعملية الاستشارة هنا رائعان. منذ لحظة وصولنا إلى المطار، تعامل فريق التنسيق مع كل التفاصيل اللوجستية بدعم لا يصدق. هذه الرعاية الشاملة منحتنا أملاً وأمانًا هائلين فيما يتعلق بخطط تتبع الإدراك والتواصل الاجتماعي المستمرة لابننا الصغير.",
+    author: "والد رعاية الأطفال",
+    location: "الإمارات العربية المتحدة",
+    flag: "🇦🇪",
   },
   {
     kind: "graphic" as const,
     graphic: {
       bg: "#03045E",
       title: "-60%",
-      subtitle: "Glucose Drop by Day 2",
+      subtitle: "انخفاض الجلوكوز بحلول اليوم 2",
       titleColor: "#FDAA3E",
     },
-    badge: "TYPE 2 DIABETES PROTOCOL",
-    text: "I struggled to control my Type 2 Diabetes with high doses of insulin and pills for 14 years. Following an intensive 5-day custom embryonic stem cell and exosome program under Dr. Yaroslav, my blood glucose levels dropped by a remarkable 60% by Day 2. By Day 5, my leg numbness and severe sciatic nerve pain were reduced by nearly 90%.",
-    author: "Fawaz",
-    location: "Kuwait",
+    badge: "بروتوكول السكري من النوع 2",
+    text: "كافحت للسيطرة على مرض السكري من النوع 2 بجرعات عالية من الأنسولين والحبوب لمدة 14 عامًا. بعد برنامج مكثف مخصص لمدة 5 أيام من الخلايا الجذعية الجنينية والإكسوسومات تحت إشراف الدكتور ياروسلاف، انخفض مستوى الجلوكوز في دمي بشكل ملحوظ بنسبة 60% بحلول اليوم الثاني. وبحلول اليوم الخامس، انخفض تنميل ساقي وألم العصب الوركي الشديد بنسبة 90% تقريبًا.",
+    author: "فواز",
+    location: "الكويت",
+    flag: "🌍",
   },
 
   {
     kind: "graphic" as const,
-    graphic: { bg: "#02C39A", icon: Bone, label: "Mobility Restored" },
-    badge: "SPINAL DISC & NERVE MOBILE REHABILITATION",
-    text: "I suffered from severe spinal disc herniation and localized radiating nerve pain that restricted my movement. The targeted cell and exosome therapy plan completely eliminated my localized joint inflammation and accelerated my recovery without any surgical risks. I have fully regained my physical mobility and comfort.",
-    author: "Orthopedic Patient",
-    location: "Gulf Region",
+    graphic: { bg: "#02C39A", icon: Bone, label: "استعادة الحركة" },
+    badge: "إعادة تأهيل القرص الفقري والعصب الحركي",
+    text: "عانيت من فتق قرص فقري شديد وألم عصبي موضعي منتشر قيّد حركتي. أدت خطة العلاج المستهدفة بالخلايا والإكسوسومات إلى القضاء الكامل على التهاب المفاصل الموضعي وسرّعت تعافيي دون أي مخاطر جراحية. لقد استعدت حركتي الجسدية وراحتي بشكل كامل.",
+    author: "مريض عظام",
+    location: "منطقة الخليج",
+    flag: "🇦🇪",
   },
   {
     kind: "graphic" as const,
-    graphic: { bg: "#03045E", icon: Dna, label: "Joint Regeneration" },
-    badge: "COMPLEX TISSUE & ORTHOPEDIC REPAIR",
-    text: "The positive energy, attentiveness, and continuous support from the clinical coordinators made my treatment incredibly comforting. Every staff member is highly professional, ensuring a flawless therapeutic process that has completely revitalized my joint movement and general physical capacity.",
-    author: "International Patient",
-    location: "Middle East",
+    graphic: { bg: "#03045E", icon: Dna, label: "تجديد المفاصل" },
+    badge: "إصلاح الأنسجة المعقدة والعظام",
+    text: "الطاقة الإيجابية والاهتمام والدعم المستمر من منسقي العيادة جعلوا علاجي مريحًا للغاية. كل عضو من أعضاء الطاقم محترف للغاية، مما يضمن عملية علاجية لا تشوبها شائبة أعادت تنشيط حركة مفاصلي وقدرتي الجسدية العامة تمامًا.",
+    author: "مريض دولي",
+    location: "الشرق الأوسط",
+    flag: "🌍",
   },
   {
     kind: "image" as const,
     image: patient13,
-    badge: "METABOLIC COMPENSATION & VITALITY",
-    text: "The dynamic bodily changes and energy optimization I experienced by Day 5 were incredible. This multi-potent embryonic cell protocol has completely restored my physical activity levels, balanced my metabolic metrics, and provided deep, restorative sleep quality that I haven't had in years.",
-    author: "Healthcare Tourist",
-    location: "Saudi Arabia",
+    badge: "التعويض الأيضي والحيوية",
+    text: "كانت التغيرات الجسدية الديناميكية وتحسين الطاقة التي شهدتها بحلول اليوم الخامس مذهلة. أدى هذا البروتوكول الخلوي الجنيني متعدد القدرات إلى استعادة مستويات نشاطي البدني بالكامل، وموازنة مؤشراتي الأيضية، وتوفير جودة نوم عميقة ومريحة لم أحظَ بها منذ سنوات.",
+    author: "سائح صحي",
+    location: "المملكة العربية السعودية",
+    flag: "🇸🇦",
   },
   {
     kind: "graphic" as const,
-    graphic: { bg: "#00A896", icon: ShieldPlus, label: "Systemic Renewal" },
-    badge: "POST-TRAUMATIC SYSTEMIC RENEWAL",
-    text: "A highly sophisticated medical alliance. The combination of specialized embryonic Muse cells with target peptides completely eliminated my chronic pain, optimized my internal organ tracking metrics, and allowed me to transition toward a completely drug-independent lifestyle. I highly praise this team's work.",
-    author: "Systemic Therapy Patient",
-    location: "Iraq",
+    graphic: { bg: "#00A896", icon: ShieldPlus, label: "التجديد الجهازي" },
+    badge: "التجديد الجهازي بعد الصدمة",
+    text: "تحالف طبي متطور للغاية. أدى الجمع بين خلايا Muse الجنينية المتخصصة والببتيدات المستهدفة إلى القضاء الكامل على ألمي المزمن، وتحسين مؤشرات تتبع أعضائي الداخلية، وسمح لي بالانتقال إلى نمط حياة مستقل تمامًا عن الأدوية. أشيد بشدة بعمل هذا الفريق.",
+    author: "مريض العلاج الجهازي",
+    location: "العراق",
+    flag: "🇮🇶",
   },
 ];
-
-function locationFlag(loc: string): string {
-  const l = loc.toLowerCase();
-  if (l.includes("united arab") || l.includes("uae")) return "🇦🇪";
-  if (l.includes("saudi")) return "🇸🇦";
-  if (l.includes("iraq")) return "🇮🇶";
-  if (l.includes("turkey") || l.includes("türkiye")) return "🇹🇷";
-  if (l.includes("china")) return "🇨🇳";
-  if (l.includes("eastern europe")) return "🇪🇺";
-  if (l.includes("gulf")) return "🇦🇪";
-  if (l.includes("middle east")) return "🌍";
-  return "🌍";
-}
 
 function Reviews() {
   const [index, setIndex] = useState(0);
@@ -1089,17 +1087,16 @@ function Reviews() {
         <ScrollReveal>
           <div className="text-center mb-12 sm:mb-16">
             <p className="text-sm font-semibold uppercase tracking-widest text-[#FDAA3E] mb-3">
-              Patient Outcomes
+              نتائج المرضى
             </p>
             <h2
               className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-slate-900"
               style={{ lineHeight: "1.15" }}
             >
-              Clinical Success Stories
+              قصص نجاح سريرية
             </h2>
             <p className="mt-4 text-slate-600 max-w-2xl mx-auto text-base sm:text-lg">
-              Authentic recovery journeys from international patients treated at
-              our Tbilisi clinic.
+              رحلات تعافٍ حقيقية لمرضى دوليين عولجوا في عيادتنا في تبليسي.
             </p>
           </div>
         </ScrollReveal>
@@ -1117,7 +1114,7 @@ function Reviews() {
               {successStories.map((s, i) => (
                 <div
                   key={i}
-                  className="snap-start shrink-0 basis-[87%] pl-5 last:pr-5"
+                  className="snap-start shrink-0 basis-[87%] pr-5 last:pl-5"
                   style={{ transform: "translateZ(0)" }}
                 >
                   <div className="rounded-3xl overflow-hidden bg-white border border-slate-200/80 shadow-[0_10px_40px_-15px_rgba(15,23,42,0.15)]">
@@ -1174,7 +1171,7 @@ function Reviews() {
                           </p>
                           <span className="shrink-0 inline-flex items-center gap-1.5 text-white/90 text-sm font-medium">
                             <span className="text-lg leading-none">
-                              {locationFlag(s.location)}
+                              {s.flag}
                             </span>
                           </span>
                         </div>
@@ -1268,7 +1265,7 @@ function Reviews() {
                     </p>
                     <span className="shrink-0 inline-flex items-center gap-1.5 text-white/90 text-sm sm:text-base font-medium">
                       <span className="text-lg sm:text-lg leading-none">
-                        {locationFlag(story.location)}
+                        {story.flag}
                       </span>
                       <span className="hidden sm:inline">{story.location}</span>
                     </span>
@@ -1295,17 +1292,17 @@ function Reviews() {
             {/* Absolute-positioned nav arrows on the carousel edges (desktop only) */}
             <button
               onClick={prev}
-              aria-label="Previous story"
-              className="absolute -left-3 md:-left-5 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-11 h-11 md:w-12 md:h-12 rounded-full bg-slate-950/40 hover:bg-slate-950/70 text-white backdrop-blur-sm opacity-70 hover:opacity-100 active:scale-95 transition-all"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-            <button
-              onClick={next}
-              aria-label="Next story"
+              aria-label="القصة السابقة"
               className="absolute -right-3 md:-right-5 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-11 h-11 md:w-12 md:h-12 rounded-full bg-slate-950/40 hover:bg-slate-950/70 text-white backdrop-blur-sm opacity-70 hover:opacity-100 active:scale-95 transition-all"
             >
               <ChevronRight className="w-5 h-5" />
+            </button>
+            <button
+              onClick={next}
+              aria-label="القصة التالية"
+              className="absolute -left-3 md:-left-5 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-11 h-11 md:w-12 md:h-12 rounded-full bg-slate-950/40 hover:bg-slate-950/70 text-white backdrop-blur-sm opacity-70 hover:opacity-100 active:scale-95 transition-all"
+            >
+              <ChevronLeft className="w-5 h-5" />
             </button>
           </div>
         </ScrollReveal>
@@ -1319,105 +1316,105 @@ const TEAM = [
   {
     img: yaroslav,
     name: "Dr. Yaroslav Myroshnykov, MD, PhD",
-    role: "Chief Physician & Co-Founder",
-    badges: ["50+ Publications", "7 Patents", "Int'l License"],
+    role: "كبير الأطباء والمؤسس المشارك",
+    badges: ["أكثر من 50 منشورًا علميًا", "7 براءات اختراع", "ترخيص دولي"],
     bio: [
-      "Co-founder of StemPlus and a globally recognised authority in stem cell medicine, Dr. Yaroslav Myroshnykov has spent nearly three decades pioneering regenerative treatments across Ukraine, China, and now Georgia. He is the author of 50+ publications, holder of 7 invention patents, and was awarded the Young Scientist Prize by the Academy of Medical Sciences of Ukraine.",
-      "Dr. Myroshnykov graduated with honors from the National Medical University named after Academician O.O. Bogomolets in Kyiv in 1996, before spending almost a decade (1996–2005) at the Institute of Urology of the Academy of Medical Sciences of Ukraine, specialising in general medicine and sexopathology.",
-      "In 2001 he was awarded the Young Scientist Prize by the Academy of Medical Sciences of Ukraine, following his Candidate of Medical Sciences dissertation on the diagnosis and treatment of vascular-origin erectile dysfunction. He went on to serve as Chief Sexopathology Expert for the Kyiv City Health Department (2006–2011), organising seven scientific and practical conferences, while simultaneously directing research at the Ukrainian Scientific Center for Cryobiology and Cryomedicine (2006–2013). From 2009 to 2013 he founded and led the Institute of Stem Cell Medicine PLUS, and from 2010 he served as a leading researcher at the Ministry of Health of Ukraine's Center for Stem Cell Therapy.",
-      "Between 2017 and 2019, Dr. Myroshnykov practiced at the Boao Life Care Center in Hainan, China, specialising in stem cell therapy and sexual function optimisation under an international medical practice license. Since Russia's invasion of Ukraine, he has continued his clinical work abroad — first at the Revival Technologies Clinic in Batumi (2022), then Phoenix Clinic in Plovdiv, Bulgaria (2023–2024) — before joining StemPlus in Tbilisi in May 2024, where he now leads the clinic's cellular medicine programs in anti-aging, diabetes management, and sexual function rehabilitation.",
+      "المؤسس المشارك لستيم بلس ومرجعية معترف بها عالميًا في طب الخلايا الجذعية، أمضى الدكتور ياروسلاف ميروشنيكوف ما يقرب من ثلاثة عقود في ريادة العلاجات التجديدية عبر أوكرانيا والصين والآن جورجيا. وهو مؤلف لأكثر من 50 منشورًا علميًا، وحائز على 7 براءات اختراع، وحاصل على جائزة العالم الشاب من أكاديمية العلوم الطبية الأوكرانية.",
+      "تخرج الدكتور ميروشنيكوف بمرتبة الشرف من جامعة كييف الوطنية الطبية باسم الأكاديمي أ.أ. بوغوموليتس في عام 1996، قبل أن يقضي ما يقرب من عقد من الزمن (1996-2005) في معهد المسالك البولية التابع لأكاديمية العلوم الطبية الأوكرانية، متخصصًا في الطب العام وعلم الأمراض الجنسية.",
+      "في عام 2001، حصل على جائزة العالم الشاب من أكاديمية العلوم الطبية الأوكرانية، عقب أطروحته لدرجة مرشح العلوم الطبية حول تشخيص وعلاج ضعف الانتصاب ذي المنشأ الوعائي. ثم عمل كبير خبراء علم الأمراض الجنسية في إدارة الصحة بمدينة كييف (2006-2011)، حيث نظم سبعة مؤتمرات علمية وعملية، بينما كان يدير في الوقت نفسه الأبحاث في المركز العلمي الأوكراني لعلم الأحياء البردي والطب البردي (2006-2013). ومن 2009 إلى 2013، أسس وقاد معهد طب الخلايا الجذعية بلس، ومنذ عام 2010 عمل كباحث رئيسي في مركز علاج الخلايا الجذعية التابع لوزارة الصحة الأوكرانية.",
+      "بين عامي 2017 و2019، مارس الدكتور ميروشنيكوف مهنته في مركز بوآو لايف كير في هاينان، الصين، متخصصًا في العلاج بالخلايا الجذعية وتحسين الوظيفة الجنسية بموجب ترخيص ممارسة طبية دولي. ومنذ الغزو الروسي لأوكرانيا، واصل عمله السريري في الخارج — أولاً في عيادة ريفايفال تكنولوجيز في باتومي (2022)، ثم عيادة فينيكس في بلوفديف، بلغاريا (2023-2024) — قبل الانضمام إلى ستيم بلس في تبليسي في مايو 2024، حيث يقود الآن برامج الطب الخلوي في العيادة لمكافحة الشيخوخة، وإدارة السكري، وإعادة تأهيل الوظيفة الجنسية.",
     ],
     credentials: [
-      "MD, National Medical University named after O.O. Bogomolets, Kyiv (1996, with honors)",
-      "Candidate of Medical Sciences (Urology) — Institute of Urology and Nephrology, Academy of Medical Sciences of Ukraine",
-      "Higher Qualification Category in Urology — Ministry of Health of Ukraine (awarded 2019)",
-      "Specialist Qualification in Healthcare Organization & Management — Ministry of Health of Ukraine (awarded 2021)",
-      "International medical practice license (China)",
-      "Young Scientist Prize, Academy of Medical Sciences of Ukraine (2001)",
+      "دكتوراه في الطب، جامعة كييف الوطنية الطبية باسم أ.أ. بوغوموليتس (1996، بمرتبة الشرف)",
+      "مرشح العلوم الطبية (المسالك البولية) — معهد المسالك البولية وأمراض الكلى، أكاديمية العلوم الطبية الأوكرانية",
+      "فئة التأهيل العليا في المسالك البولية — وزارة الصحة الأوكرانية (مُنحت عام 2019)",
+      "مؤهل تخصصي في تنظيم وإدارة الرعاية الصحية — وزارة الصحة الأوكرانية (مُنح عام 2021)",
+      "ترخيص ممارسة طبية دولي (الصين)",
+      "جائزة العالم الشاب، أكاديمية العلوم الطبية الأوكرانية (2001)",
     ],
   },
   {
     img: nino,
     name: "Dr. Nino Kandelaki, MD, PhD, Postdoctoral",
-    role: "Chief Cosmetic Dermatologist",
+    role: "كبيرة أطباء الجلدية التجميلية",
     badges: [],
     bio: [
-      "Chief Cosmetic Dermatologist at StemPlus, Dr. Nino Kandelaki brings over 17 years of clinical dermatology and aesthetic medicine experience, with advanced international training spanning Korea, Georgia, and beyond.",
-      "Dr. Kandelaki is a dermatologist and venereologist with more than seventeen years of clinical experience in dermatology, trichology, and aesthetic medicine. She previously served as lead injector at the City Luxe clinic and worked as an international trainer for the Spanish skincare brand PBSerum.",
-      "Her ongoing training reflects a deep specialisation in regenerative and minimally invasive aesthetic techniques: she completed a course on placental extract in therapeutic and aesthetic practice under Dr. Dong-Hwan Kim, Director of the Korean Academy of Anti-Aging Medicine (Baku, 2018); an Excellence Training in Aptos thread-lifting methods under the technique's Georgian originators, Dr. G., M., and C. Sulamanidze; and the e.p.t.q. Hyaluronic Acid Filler Master Course for Experts, certified by JETEMA. She has also participated in international congresses and refresher courses in Berlin, the United States, and the Czech Republic.",
+      "كبيرة أطباء الجلدية التجميلية في ستيم بلس، تتمتع الدكتورة نينو كانديلاكي بأكثر من 17 عامًا من الخبرة السريرية في طب الجلدية والطب التجميلي، مع تدريب دولي متقدم يمتد عبر كوريا وجورجيا وخارجهما.",
+      "الدكتورة كانديلاكي طبيبة جلدية وأمراض تناسلية بخبرة سريرية تفوق سبعة عشر عامًا في الجلدية وعلم الشعر والطب التجميلي. عملت سابقًا كبيرة أخصائيي الحقن في عيادة سيتي لوكس، وكمدربة دولية لعلامة العناية بالبشرة الإسبانية PBSerum.",
+      "يعكس تدريبها المستمر تخصصًا عميقًا في التقنيات التجميلية التجديدية طفيفة التوغل: أكملت دورة حول مستخلص المشيمة في الممارسة العلاجية والتجميلية تحت إشراف الدكتور دونغ-هوان كيم، مدير الأكاديمية الكورية لطب مكافحة الشيخوخة (باكو، 2018)؛ وتدريب التميز في تقنيات شد الخيوط Aptos تحت إشراف مبتكري هذه التقنية الجورجيين، الدكاترة ج. وم. وس. سولاماندزه؛ ودورة ماستر e.p.t.q. لحشوات حمض الهيالورونيك للخبراء، المعتمدة من JETEMA. كما شاركت في مؤتمرات دولية ودورات تنشيطية في برلين والولايات المتحدة وجمهورية التشيك.",
     ],
     credentials: [
-      "MD, PhD, Postdoctoral — Dermatology & Venereology",
-      "Placental Extract in Therapeutic Practice & Aesthetic Medicine — Korean Academy of Anti-Aging Medicine (Baku, 2018)",
-      "Aptos Thread Lifting Methods, Excellence Training",
-      "e.p.t.q. Hyaluronic Acid Filler Master Course — JETEMA",
+      "دكتوراه في الطب، دكتوراه، ما بعد الدكتوراه — الجلدية والأمراض التناسلية",
+      "مستخلص المشيمة في الممارسة العلاجية والطب التجميلي — الأكاديمية الكورية لطب مكافحة الشيخوخة (باكو، 2018)",
+      "تقنيات شد الخيوط Aptos، تدريب التميز",
+      "دورة ماستر e.p.t.q. لحشوات حمض الهيالورونيك — JETEMA",
     ],
   },
   {
     img: mikhail,
     name: "Dr. Mikhail Tsverava, MD, PhD",
-    role: "Senior Radiologist & Diagnostic Specialist",
+    role: "كبير أطباء الأشعة وأخصائي التشخيص",
     badges: [],
     bio: [
-      "Senior Radiologist with extensive practice in functional diagnostic mapping and advanced imaging. Expert in ultrasound-guided precision cellular targeting used to verify and document treatment outcomes. Provides evidence-based diagnostic support throughout every stage of the StemPlus protocol.",
+      "كبير أطباء الأشعة بخبرة واسعة في رسم خرائط التشخيص الوظيفي والتصوير المتقدم. خبير في الاستهداف الخلوي الدقيق الموجه بالموجات فوق الصوتية المستخدم للتحقق من نتائج العلاج وتوثيقها. يقدم دعمًا تشخيصيًا قائمًا على الأدلة طوال كل مرحلة من مراحل بروتوكول ستيم بلس.",
     ],
     credentials: [],
   },
   {
     img: eleonora,
     name: "Dr. Eleonora Fiodorova, MD",
-    role: "Clinical Endocrinologist & Nutritionist",
+    role: "أخصائية الغدد الصماء السريرية والتغذية",
     badges: [],
     bio: [
-      "Clinical Endocrinologist specialising in advanced endocrine systems, hormonal balance, and metabolic stabilization. Plays a key role in designing and monitoring the hormonal and metabolic components of each patient's treatment plan. Expert in integrating nutritional protocols with regenerative cellular therapy for optimised outcomes.",
+      "أخصائية غدد صماء سريرية متخصصة في الأنظمة الغدية المتقدمة، والتوازن الهرموني، واستقرار التمثيل الغذائي. تلعب دورًا رئيسيًا في تصميم ومراقبة المكونات الهرمونية والأيضية لخطة علاج كل مريض. خبيرة في دمج البروتوكولات الغذائية مع العلاج الخلوي التجديدي لتحقيق نتائج مثلى.",
     ],
     credentials: [],
   },
   {
     img: natia,
     name: "Dr. Natia Alania, MD",
-    role: "Clinical Neurologist & Neurodevelopmental Specialist",
+    role: "أخصائية الأعصاب السريرية والنمو العصبي",
     badges: [],
     bio: [
-      "Clinical Neurologist specialising in neuro-recovery pathways, functional brain mapping, and neurodevelopmental disorders. Dedicated expert in cellular protocols for Autism Spectrum Disorders and neurodegenerative conditions. Works closely with Dr. Archaia to deliver comprehensive neurological care within the StemPlus multidisciplinary team.",
+      "أخصائية أعصاب سريرية متخصصة في مسارات التعافي العصبي، ورسم خرائط الدماغ الوظيفية، واضطرابات النمو العصبي. خبيرة متخصصة في البروتوكولات الخلوية لاضطرابات طيف التوحد والحالات التنكسية العصبية. تعمل بشكل وثيق مع الدكتور أرشايا لتقديم رعاية عصبية شاملة ضمن فريق ستيم بلس متعدد التخصصات.",
     ],
     credentials: [
-      "Category I Qualification Certificate in Neurology — Georgian state medical certification commission (No. 022439, Aug 2025)",
+      "شهادة تأهيل من الفئة الأولى في طب الأعصاب — لجنة الاعتماد الطبي الحكومية الجورجية (رقم 022439، أغسطس 2025)",
     ],
   },
   {
     img: giorgi,
     name: "Dr. Giorgi Archaia, MD",
-    role: "Neurosurgeon, Neurologist & Vertebrologist",
+    role: "جراح أعصاب وأخصائي أعصاب وأخصائي فقريات",
     badges: [],
     bio: [
-      "A multidisciplinary neurologist, chiropractor, and rehabilitation specialist, Dr. Giorgi Archaia blends over 12 years of neurological expertise with hands-on manual therapy techniques trained across Georgia, Israel, and Russia.",
-      "Dr. Archaia is a neurologist, chiropractor, acupuncturist, and rehabilitation specialist with over 12 years of experience treating neurological and musculoskeletal conditions. A graduate of Tbilisi Teaching Medical University \"Hippocrates,\" he trained further at leading institutions abroad, including Asutta Clinic in Israel and Sechenov Moscow Medical University in Russia.",
-      "His multidisciplinary approach spans neurology, chiropractic, acupuncture, and modern rehabilitation methods. He is skilled in acupressure, manual therapy, physiotherapy, therapeutic exercise, medication and pharmacopuncture blockades, and visceral massage — combining these techniques to deliver comprehensive, patient-centered care within the StemPlus multidisciplinary team.",
+      "طبيب أعصاب متعدد التخصصات ومعالج بالتقويم وأخصائي إعادة تأهيل، يجمع الدكتور جورجي أرشايا بين أكثر من 12 عامًا من الخبرة العصبية وتقنيات العلاج اليدوي العملي المكتسبة في جورجيا وإسرائيل وروسيا.",
+      "الدكتور أرشايا أخصائي أعصاب ومعالج بالتقويم وإبر صينية وإعادة تأهيل بخبرة تفوق 12 عامًا في علاج الحالات العصبية والعضلية الهيكلية. خريج جامعة تبليسي التعليمية الطبية \"أبقراط\"، وتدرب كذلك في مؤسسات رائدة في الخارج، بما في ذلك عيادة أسوتا في إسرائيل وجامعة سيتشينوف الطبية في موسكو، روسيا.",
+      "يشمل نهجه متعدد التخصصات طب الأعصاب والعلاج بالتقويم والإبر الصينية وأساليب إعادة التأهيل الحديثة. وهو ماهر في العلاج بالضغط، والعلاج اليدوي، والعلاج الطبيعي، والتمارين العلاجية، وحصارات الأدوية والوخز الدوائي، وتدليك الأحشاء — يجمع بين هذه التقنيات لتقديم رعاية شاملة تركز على المريض ضمن فريق ستيم بلس متعدد التخصصات.",
     ],
     credentials: [
-      "Graduate, Tbilisi Teaching Medical University \"Hippocrates\"",
-      "Clinical training, Asutta Clinic (Israel)",
-      "Clinical training, Sechenov Moscow Medical University (Russia)",
+      "خريج، جامعة تبليسي التعليمية الطبية \"أبقراط\"",
+      "تدريب سريري، عيادة أسوتا (إسرائيل)",
+      "تدريب سريري، جامعة سيتشينوف الطبية في موسكو (روسيا)",
     ],
   },
   {
     img: lili,
     name: "Lili Martashvili",
-    role: "Director of Clinical Nursing & Compliance",
+    role: "مديرة التمريض السريري والامتثال",
     badges: [],
     bio: [
-      "Director of Clinical Nursing overseeing all patient safety protocols and clinical compliance standards at Leadermed Hospital. Commands the triage systems and outpatient healthcare standards that ensure every patient receives consistent, safe care throughout their 5-day protocol. The operational backbone of the StemPlus clinical team.",
+      "مديرة التمريض السريري المشرفة على جميع بروتوكولات سلامة المرضى ومعايير الامتثال السريري في مستشفى ليدرميد. تدير أنظمة الفرز ومعايير الرعاية الصحية الخارجية التي تضمن حصول كل مريض على رعاية آمنة ومتسقة طوال بروتوكوله لمدة 5 أيام. الركيزة التشغيلية لفريق ستيم بلس السريري.",
     ],
     credentials: [],
   },
   {
     img: mako,
     name: "Mako Khachidze",
-    role: "Clinical Infusion Nurse",
+    role: "ممرضة تسريب سريري",
     badges: [],
     bio: [
-      "Clinical Infusion Nurse specialising in the precision administration and monitoring of advanced intravenous cellular protocols. Provides hands-on care throughout every stem cell infusion procedure ensuring accuracy, comfort, and safety. A trusted presence for every international patient throughout their treatment at StemPlus.",
+      "ممرضة تسريب سريري متخصصة في الإعطاء الدقيق ومراقبة بروتوكولات الخلايا الوريدية المتقدمة. تقدم رعاية عملية طوال كل إجراء تسريب للخلايا الجذعية لضمان الدقة والراحة والسلامة. حضور موثوق به لكل مريض دولي طوال فترة علاجه في ستيم بلس.",
     ],
     credentials: [],
   },
@@ -1455,11 +1452,10 @@ function MedicalTeam() {
       <div className="max-w-7xl mx-auto px-5">
         <div className="text-center mb-14 max-w-3xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground">
-            The Minds Behind the Medicine
+            العقول وراء الطب
           </h2>
           <p className="mt-4 text-lg md:text-lg text-muted-foreground leading-relaxed">
-            Meet the elite clinical faculty and cellular bio-therapeutic
-            pioneers directing your recovery protocols at StemPlus Tbilisi.
+            تعرف على النخبة من الطاقم السريري ورواد العلاج الحيوي الخلوي الذين يوجهون بروتوكولات تعافيك في ستيم بلس تبليسي.
           </p>
         </div>
 
@@ -1467,19 +1463,19 @@ function MedicalTeam() {
         <div className="relative">
           <button
             type="button"
-            aria-label="Previous"
+            aria-label="السابق"
             onClick={() => scrollByDir(-1)}
-            className="hidden md:flex absolute left-0 md:-left-4 lg:-left-6 top-1/2 -translate-y-1/2 z-20 w-11 h-11 items-center justify-center rounded-full bg-white border border-border shadow-md text-foreground hover:bg-accent transition"
-          >
-            <ChevronLeft className="w-5 h-5" />
-          </button>
-          <button
-            type="button"
-            aria-label="Next"
-            onClick={() => scrollByDir(1)}
             className="hidden md:flex absolute right-0 md:-right-4 lg:-right-6 top-1/2 -translate-y-1/2 z-20 w-11 h-11 items-center justify-center rounded-full bg-white border border-border shadow-md text-foreground hover:bg-accent transition"
           >
             <ChevronRight className="w-5 h-5" />
+          </button>
+          <button
+            type="button"
+            aria-label="التالي"
+            onClick={() => scrollByDir(1)}
+            className="hidden md:flex absolute left-0 md:-left-4 lg:-left-6 top-1/2 -translate-y-1/2 z-20 w-11 h-11 items-center justify-center rounded-full bg-white border border-border shadow-md text-foreground hover:bg-accent transition"
+          >
+            <ChevronLeft className="w-5 h-5" />
           </button>
 
           <div
@@ -1535,8 +1531,8 @@ function MedicalTeam() {
                       onClick={() => setActive(m)}
                       className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-[#02C39A] hover:text-[#029a7a] transition-colors self-start"
                     >
-                      Read more
-                      <ArrowRight className="w-3.5 h-3.5" />
+                      اقرأ المزيد
+                      <ArrowLeft className="w-3.5 h-3.5" />
                     </button>
                   )}
                 </div>
@@ -1561,8 +1557,8 @@ function MedicalTeam() {
             <button
               type="button"
               onClick={() => setActive(null)}
-              aria-label="Close"
-              className="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center transition"
+              aria-label="إغلاق"
+              className="absolute top-4 left-4 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center transition"
             >
               <X className="w-4 h-4" />
             </button>
@@ -1591,7 +1587,7 @@ function MedicalTeam() {
               {active.credentials.length > 0 && (
                 <div className="pt-2">
                   <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">
-                    Credentials & Training
+                    المؤهلات والتدريب
                   </p>
                   <ul className="space-y-1.5">
                     {active.credentials.map((c, i) => (
@@ -1624,27 +1620,27 @@ function Footer() {
           {/* Column 1: HQ */}
           <div>
             <span className="text-sm uppercase tracking-wider text-slate-500 mb-3 block">
-              Corporate Headquarters
+              المقر الرئيسي للشركة
             </span>
             <address className="not-italic text-base leading-relaxed tracking-wide">
-              <div className="font-semibold text-slate-100">Stem Plus LLC</div>
-              <div>21 Nodar Bokhua I Ln</div>
-              <div>Tbilisi, 0159</div>
-              <div>Georgia</div>
+              <div className="font-semibold text-slate-100">ستيم بلس ذ.م.م.</div>
+              <div>21 نودار بوخوا آي لين</div>
+              <div>تبليسي، 0159</div>
+              <div>جورجيا</div>
             </address>
           </div>
 
           {/* Column 2: Map */}
           <div>
             <span className="text-sm uppercase tracking-wider text-slate-500 mb-3 block">
-              Location
+              الموقع
             </span>
             <div
               className="rounded-xl overflow-hidden border border-slate-800"
               style={{ height: 180 }}
             >
               <iframe
-                title="Stem Plus LLC location"
+                title="موقع ستيم بلس ذ.م.م."
                 src={mapSrc}
                 width="100%"
                 height="180"
@@ -1658,7 +1654,7 @@ function Footer() {
           {/* Column 3: Contacts */}
           <div>
             <span className="text-sm uppercase tracking-wider text-slate-500 mb-3 block">
-              Contacts
+              جهات الاتصال
             </span>
             <ul className="text-base space-y-3">
               <li>
@@ -1682,7 +1678,7 @@ function Footer() {
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-[#25D366]">
                     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                   </svg>
-                  Chat on WhatsApp
+                  الدردشة عبر واتساب
                 </a>
               </li>
               <li>
@@ -1695,7 +1691,7 @@ function Footer() {
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-[#229ED9]">
                     <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
                   </svg>
-                  Message on Telegram
+                  راسلنا عبر تيليجرام
                 </a>
               </li>
               <li>
@@ -1715,32 +1711,32 @@ function Footer() {
 
         <div className="mt-12 pt-6 border-t border-slate-900/50 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-slate-500">
-            © 2026 Stem Plus LLC. All rights reserved.
+            © 2026 ستيم بلس ذ.م.م. جميع الحقوق محفوظة.
           </p>
           <div className="flex items-center gap-6">
             <Link
-              to="/privacy"
+              to="/ar/privacy"
               className="text-sm text-slate-400 transition-colors duration-200 hover:text-[#02C39A]"
             >
-              Privacy Policy
+              سياسة الخصوصية
             </Link>
             <Link
-              to="/terms"
+              to="/ar/terms"
               className="text-sm text-slate-400 transition-colors duration-200 hover:text-[#02C39A]"
             >
-              Terms of Service
+              شروط الخدمة
             </Link>
             <Link
-              to="/terms"
+              to="/ar/terms"
               className="text-sm text-slate-400 transition-colors duration-200 hover:text-[#02C39A]"
             >
-              Medical Disclaimer
+              إخلاء المسؤولية الطبية
             </Link>
             <Link
-              to="/ar"
+              to="/"
               className="text-sm text-slate-400 transition-colors duration-200 hover:text-[#02C39A]"
             >
-              العربية (AR)
+              English (EN)
             </Link>
           </div>
         </div>
@@ -1752,61 +1748,61 @@ function Footer() {
 /* ─── FAQ Section ─── */
 const FAQ_ITEMS = [
   {
-    q: "What is stem cell therapy and how does it work?",
-    a: "Stem cell therapy is a regenerative medicine treatment that harnesses the body's natural repair mechanisms to address damaged tissue, chronic disease, and cellular decline. At StemPlus, we use a specific type of stem cell called Muse cells — multipotent mesenchymal stem cells sourced from GMP-certified laboratories with independently verified vitality scores above 98%. Unlike conventional stem cells, Muse cells remain active in the body for 6 months to 1 year, providing a continuous therapeutic effect with zero carcinogenic risk. These are combined with exosomes, peptides, and bioidentical implants into a personalised protocol designed around your specific diagnostic results — not a generic treatment plan.",
+    q: "ما هو العلاج بالخلايا الجذعية وكيف يعمل؟",
+    a: "العلاج بالخلايا الجذعية هو علاج في الطب التجديدي يستخدم آليات الإصلاح الطبيعية للجسم لمعالجة الأنسجة التالفة والأمراض المزمنة والتدهور الخلوي. في ستيم بلس، نستخدم نوعًا محددًا من الخلايا الجذعية يسمى خلايا Muse — وهي خلايا جذعية وسيطية متعددة القدرات مصدرها مختبرات معتمدة وفق معايير GMP بدرجات حيوية موثقة بشكل مستقل تتجاوز 98%. على عكس الخلايا الجذعية التقليدية، تبقى خلايا Muse نشطة في الجسم لمدة تتراوح بين 6 أشهر وعام واحد، مما يوفر تأثيرًا علاجيًا مستمرًا مع خطر انعدام تام للأورام. تُدمج هذه الخلايا مع الإكسوسومات والببتيدات والزرعات الحيوية المطابقة في بروتوكول شخصي مصمم حول نتائجك التشخيصية المحددة — وليس خطة علاج عامة.",
   },
   {
-    q: "What conditions do you treat?",
-    a: "StemPlus treats a broad range of conditions. Medical conditions include Type 1 and Type 2 diabetes, liver disease including fibrosis and cirrhosis, neurological and neurodegenerative diseases, stroke rehabilitation, autism spectrum disorder, autoimmune diseases, orthopedic conditions including arthritis and sports injuries, cardiac rehabilitation, erectile dysfunction and male infertility, female infertility and diminished ovarian reserve, retinopathy, and urological and gynecological conditions. On the rejuvenation side we offer comprehensive anti-aging protocols using embryonic stem cells, testosterone restoration and hormonal optimisation, and aesthetic cellular medicine including facial rejuvenation and hair restoration. Every patient is assessed individually by Dr. Yaroslav Myroshnykov before a protocol is recommended.",
+    q: "ما هي الحالات التي تعالجونها؟",
+    a: "تعالج ستيم بلس مجموعة واسعة من الحالات. تشمل الحالات الطبية السكري من النوعين الأول والثاني، وأمراض الكبد بما فيها التليف والتشمع، والأمراض العصبية والتنكسية العصبية، وإعادة التأهيل بعد السكتة الدماغية، واضطراب طيف التوحد، وأمراض المناعة الذاتية، والحالات العظمية بما فيها التهاب المفاصل وإصابات الرياضة، وإعادة تأهيل القلب، وضعف الانتصاب والعقم عند الرجال، والعقم عند النساء وانخفاض احتياطي المبيض، واعتلال الشبكية، والحالات البولية والنسائية. أما على صعيد التجديد، فنقدم بروتوكولات شاملة لمكافحة الشيخوخة باستخدام الخلايا الجذعية الجنينية، واستعادة هرمون التستوستيرون وتحسينه الهرموني، والطب الخلوي التجميلي بما في ذلك تجديد الوجه واستعادة الشعر. يتم تقييم كل مريض بشكل فردي من قبل الدكتور ياروسلاف ميروشنيكوف قبل التوصية ببروتوكول.",
   },
   {
-    q: "How many sessions will I need?",
-    a: "Most patients complete StemPlus's 5-day protocol at Leadermed Hospital in Tbilisi. Day 1 is a comprehensive diagnostic workup — blood panels, ultrasound, specialist consultations, and treatment plan development. Day 2 begins the primary infusion phase, a 3–4 hour intravenous procedure combined with peptides and biosimilar drugs. Day 3 includes a secondary infusion and optional cosmetic injectables. Day 4 is dynamic evaluation and treatment adjustment. Day 5 is discharge summary and follow-up milestone planning. After leaving Tbilisi, patients maintain ongoing contact with the clinical team to monitor treatment effectiveness.",
+    q: "كم عدد الجلسات التي سأحتاجها؟",
+    a: "يكمل معظم المرضى بروتوكول ستيم بلس لمدة 5 أيام في مستشفى ليدرميد في تبليسي. اليوم الأول هو فحص تشخيصي شامل — تحاليل دم، وموجات فوق صوتية، واستشارات متخصصة، ووضع خطة العلاج. يبدأ اليوم الثاني مرحلة التسريب الأولية، وهو إجراء وريدي يستغرق 3-4 ساعات مقترن بالببتيدات والأدوية الحيوية المشابهة. يشمل اليوم الثالث تسريبًا ثانويًا وحقنًا تجميلية اختيارية. اليوم الرابع هو تقييم ديناميكي وتعديل العلاج. اليوم الخامس هو ملخص الخروج وتخطيط معالم المتابعة. بعد مغادرة تبليسي، يحافظ المرضى على تواصل مستمر مع الفريق السريري لمراقبة فعالية العلاج.",
   },
   {
-    q: "Is stem cell therapy safe?",
-    a: "StemPlus uses only Muse cells sourced from GMP-certified laboratories, independently certified with vitality scores above 98% and tested negative for all viral and bacterial content. Every patient undergoes a full diagnostic workup before treatment begins. We physically bring your cells to you and show them before administration. Dr. Myroshnykov has over 50 published papers and 7 invention patents in cellular medicine, and our protocols are grounded in decades of peer-reviewed research originating from the Institute for Problems of Cryobiology in Kharkiv, Ukraine.",
+    q: "هل العلاج بالخلايا الجذعية آمن؟",
+    a: "تستخدم ستيم بلس فقط خلايا Muse المصدرة من مختبرات معتمدة وفق معايير GMP، معتمدة بشكل مستقل بدرجات حيوية تتجاوز 98% ومختبرة سلبيًا لجميع المحتويات الفيروسية والبكتيرية. يخضع كل مريض لفحص تشخيصي كامل قبل بدء العلاج. نُحضر لك خلاياك فعليًا ونعرضها عليك قبل إعطائها. لدى الدكتور ميروشنيكوف أكثر من 50 بحثًا منشورًا و7 براءات اختراع في الطب الخلوي، وتستند بروتوكولاتنا إلى عقود من الأبحاث المُحكّمة الناشئة من معهد مشكلات علم الأحياء البردي في خاركيف، أوكرانيا.",
   },
   {
-    q: "Is stem cell therapy experimental?",
-    a: "In some countries stem cell therapy is still classified as experimental, and we are transparent about this. At StemPlus, treatments are administered legally within Leadermed Hospital — a licensed, fully equipped multidisciplinary medical facility in Tbilisi, Georgia. The science underpinning our protocols traces back to 1972 and the Institute for Problems of Cryobiology in Kharkiv. Statistical analysis of our outcomes has demonstrated highly reliable results, including complete restoration of liver parenchyma in fibrosis and cirrhosis cases, and a 2–3 fold increase in insulin reserves in diabetic patients. We encourage all patients to consult their own physician before travelling.",
+    q: "هل العلاج بالخلايا الجذعية تجريبي؟",
+    a: "في بعض الدول، لا يزال العلاج بالخلايا الجذعية مصنفًا كعلاج تجريبي، ونحن شفافون بشأن ذلك. في ستيم بلس، تُقدم العلاجات بشكل قانوني داخل مستشفى ليدرميد — منشأة طبية مرخصة ومتعددة التخصصات ومجهزة بالكامل في تبليسي، جورجيا. يعود العلم الذي تستند إليه بروتوكولاتنا إلى عام 1972 ومعهد مشكلات علم الأحياء البردي في خاركيف. أظهر التحليل الإحصائي لنتائجنا نتائج موثوقة للغاية، بما في ذلك الاستعادة الكاملة لحمة الكبد في حالات التليف والتشمع، وزيادة بمقدار 2-3 أضعاف في احتياطي الأنسولين لدى مرضى السكري. نشجع جميع المرضى على استشارة طبيبهم الخاص قبل السفر.",
   },
   {
-    q: "Who are the doctors at StemPlus?",
-    a: "The StemPlus clinical team is led by three specialists. Dr. Yaroslav Myroshnykov is Chief Physician and stem cell specialist — PhD, author of over 50 published papers, holder of 7 invention patents, awarded the Young Scientist Prize by the Academy of Medical Sciences of Ukraine in 2001, and holder of an international medical practice license with clinical experience in China. Dr. Nino Kandelaki is Chief Cosmetic Dermatologist with 17 years of experience, MD and PhD with postdoctoral training, and international trainer for the Spanish brand PBSerum. Dr. Giorgi Archaia is Neurosurgeon, Neurologist and Vertebrologist with 12 years of experience, trained at Asutta Clinic in Israel and Sechenov Moscow Medical University in Russia.",
+    q: "من هم الأطباء في ستيم بلس؟",
+    a: "يقود فريق ستيم بلس السريري ثلاثة متخصصين. الدكتور ياروسلاف ميروشنيكوف هو كبير الأطباء وأخصائي الخلايا الجذعية — حاصل على الدكتوراه، ومؤلف لأكثر من 50 بحثًا منشورًا، وحائز على 7 براءات اختراع، وحاصل على جائزة العالم الشاب من أكاديمية العلوم الطبية الأوكرانية عام 2001، وحائز على ترخيص ممارسة طبية دولي مع خبرة سريرية في الصين. الدكتورة نينو كانديلاكي هي كبيرة أطباء الجلدية التجميلية بخبرة 17 عامًا، حاصلة على دكتوراه في الطب ودكتوراه مع تدريب ما بعد الدكتوراه، ومدربة دولية للعلامة الإسبانية PBSerum. الدكتور جورجي أرشايا هو جراح أعصاب وأخصائي أعصاب وأخصائي فقريات بخبرة 12 عامًا، تدرب في عيادة أسوتا في إسرائيل وجامعة سيتشينوف الطبية في موسكو، روسيا.",
   },
   {
-    q: "What makes StemPlus different from other clinics?",
-    a: "Three things set StemPlus apart. First, the cells: StemPlus uses Muse cells from GMP-certified laboratories with independently verified vitality scores above 98% — not all clinics can say the same. Second, the science: our protocols are built on over 50 years of cellular research with Dr. Myroshnykov's 50+ published papers and 7 patents underpinning every treatment decision. Third, the verification: StemPlus uses evidence-based methods to measure outcomes — tissue elastography, C-peptide assessment, Anti-Müllerian Hormone testing, and neuromyography — so results are documented, not assumed.",
+    q: "ما الذي يميز ستيم بلس عن العيادات الأخرى؟",
+    a: "ثلاثة أمور تميز ستيم بلس. أولاً، الخلايا: تستخدم ستيم بلس خلايا Muse من مختبرات معتمدة وفق معايير GMP بدرجات حيوية موثقة بشكل مستقل تتجاوز 98% — وليس بإمكان جميع العيادات قول الشيء نفسه. ثانيًا، العلم: تُبنى بروتوكولاتنا على أكثر من 50 عامًا من الأبحاث الخلوية مع دعم أكثر من 50 بحثًا منشورًا للدكتور ميروشنيكوف و7 براءات اختراع لكل قرار علاجي. ثالثًا، التحقق: تستخدم ستيم بلس أساليب قائمة على الأدلة لقياس النتائج — تصوير مرونة الأنسجة، وتقييم الببتيد السي، واختبار الهرمون المضاد لمولر، وتخطيط كهربية العضل العصبي — بحيث تكون النتائج موثقة وليست مفترضة.",
   },
   {
-    q: "Do I need a visa to visit Georgia?",
-    a: "Citizens of over 90 countries can enter Georgia visa-free, including all EU member states, the United Kingdom, the United States, Canada, Australia, and most Middle Eastern countries. Georgia has one of the most open visa policies in the world. You can verify your country's requirements at the Georgian Ministry of Foreign Affairs website before booking.",
+    q: "هل أحتاج إلى تأشيرة لزيارة جورجيا؟",
+    a: "يمكن لمواطني أكثر من 90 دولة دخول جورجيا دون تأشيرة، بما في ذلك جميع دول الاتحاد الأوروبي، والمملكة المتحدة، والولايات المتحدة، وكندا، وأستراليا، ومعظم دول الشرق الأوسط. تتمتع جورجيا بواحدة من أكثر سياسات التأشيرات انفتاحًا في العالم. يمكنك التحقق من متطلبات بلدك على موقع وزارة الخارجية الجورجية قبل الحجز.",
   },
   {
-    q: "How do I get to Tbilisi?",
-    a: "Tbilisi International Airport connects directly to most major European cities, the Middle East, and Central Asia. Typical flight times are 3–4 hours from Western Europe, around 5 hours from the UK, and 4–5 hours from the Gulf states. From the airport, Leadermed Hospital is approximately 20–25 minutes by taxi or rideshare. We recommend the Bolt app for reliable, fairly priced airport transfers.",
+    q: "كيف أصل إلى تبليسي؟",
+    a: "يرتبط مطار تبليسي الدولي مباشرة بمعظم المدن الأوروبية الكبرى، والشرق الأوسط، وآسيا الوسطى. تستغرق أوقات الطيران المعتادة من 3 إلى 4 ساعات من أوروبا الغربية، وحوالي 5 ساعات من المملكة المتحدة، ومن 4 إلى 5 ساعات من دول الخليج. من المطار، يبعد مستشفى ليدرميد حوالي 20-25 دقيقة بسيارة الأجرة أو تطبيقات النقل التشاركي. نوصي بتطبيق Bolt لتوصيلات موثوقة ومعقولة السعر من وإلى المطار.",
   },
   {
-    q: "Can I combine treatment with tourism?",
-    a: "Absolutely — and most of our patients do. The StemPlus 5-day protocol leaves your evenings free, and Tbilisi rewards exploration. The city has a remarkably preserved medieval old town, world-famous sulfur baths, exceptional Georgian cuisine, and a natural wine culture that draws visitors from across Europe. Most patients arrive a day early to settle in and extend their stay after treatment.",
+    q: "هل يمكنني الجمع بين العلاج والسياحة؟",
+    a: "بالتأكيد — ومعظم مرضانا يفعلون ذلك. يترك بروتوكول ستيم بلس لمدة 5 أيام أمسياتك حرة، وتبليسي تكافئ الاستكشاف. تتميز المدينة ببلدة قديمة من القرون الوسطى محفوظة بشكل رائع، وحمامات كبريتية عالمية الشهرة، ومطبخ جورجي استثنائي، وثقافة نبيذ طبيعي تجذب الزوار من جميع أنحاء أوروبا. يصل معظم المرضى قبل يوم للاستقرار وتمديد إقامتهم بعد العلاج.",
   },
   {
-    q: "What language do the doctors speak?",
-    a: "Dr. Myroshnykov and the senior clinical team are fluent in English, Russian, and Ukrainian. All consultations for international patients are conducted in English. Our patient coordination team is available in English throughout your stay — from your initial video consultation through to your departure from Tbilisi.",
+    q: "ما هي اللغة التي يتحدث بها الأطباء؟",
+    a: "يجيد الدكتور ميروشنيكوف وكبار الفريق السريري اللغات الإنجليزية والروسية والأوكرانية. تُجرى جميع الاستشارات للمرضى الدوليين باللغة الإنجليزية. فريق تنسيق المرضى لدينا متاح باللغة الإنجليزية طوال فترة إقامتك — من استشارتك الأولى عبر الفيديو وحتى مغادرتك تبليسي.",
   },
   {
-    q: "How much does stem cell therapy cost at StemPlus?",
-    a: "Treatment costs depend on your condition and the protocol Dr. Myroshnykov recommends. Your free 30-minute consultation will include a complete cost breakdown before you commit to anything. As a general guide, patients typically invest between $3,000 and $12,000 for a full 5-day protocol at Leadermed Hospital — significantly less than equivalent treatments using GMP-certified Muse cells in Germany, Switzerland, or the United States, where costs can be three to five times higher.",
+    q: "كم تكلفة العلاج بالخلايا الجذعية في ستيم بلس؟",
+    a: "تعتمد تكلفة العلاج على حالتك والبروتوكول الذي يوصي به الدكتور ميروشنيكوف. ستتضمن استشارتك المجانية لمدة 30 دقيقة تفصيلاً كاملاً للتكلفة قبل الالتزام بأي شيء. كدليل عام، يستثمر المرضى عادة ما بين 3000 و12000 دولار مقابل بروتوكول كامل لمدة 5 أيام في مستشفى ليدرميد — وهو أقل بكثير من العلاجات المماثلة باستخدام خلايا Muse المعتمدة وفق معايير GMP في ألمانيا أو سويسرا أو الولايات المتحدة، حيث يمكن أن تكون التكاليف أعلى بثلاث إلى خمس مرات.",
   },
   {
-    q: "What is included in the treatment package?",
-    a: "Your StemPlus treatment package includes your full diagnostic workup on arrival — blood panels, specialist consultations, ultrasound and elastography where required — all cellular therapy sessions as prescribed, daily clinical monitoring throughout your 5-day stay, a comprehensive discharge summary with follow-up recommendations, and ongoing remote support from the clinical team after you return home. Accommodation and flights are arranged independently.",
+    q: "ماذا تتضمن باقة العلاج؟",
+    a: "تتضمن باقة علاج ستيم بلس فحصك التشخيصي الكامل عند الوصول — تحاليل الدم، والاستشارات المتخصصة، والموجات فوق الصوتية وتصوير المرونة عند الحاجة — وجميع جلسات العلاج الخلوي الموصوفة، والمراقبة السريرية اليومية طوال إقامتك لمدة 5 أيام، وملخص خروج شامل مع توصيات المتابعة، والدعم عن بُعد المستمر من الفريق السريري بعد عودتك إلى منزلك. تُرتب الإقامة والرحلات الجوية بشكل مستقل.",
   },
   {
-    q: "How do I book a consultation?",
-    a: "Consultations are scheduled through our clinic booking page. You will be asked for your name and email address, then taken directly to our scheduling calendar to choose a time that suits you. The consultation is free, takes 30 minutes, and is conducted via video call with a member of Dr. Myroshnykov's clinical team. There is no obligation to proceed.",
-    cta: { label: "Book your free consultation", href: "https://en.stemplusclinic.com/#admissions" },
+    q: "كيف أحجز استشارة؟",
+    a: "تُحجز الاستشارات من خلال صفحة الحجز الخاصة بعيادتنا. سيُطلب منك اسمك وبريدك الإلكتروني، ثم تنتقل مباشرة إلى تقويم الحجز لاختيار الوقت الذي يناسبك. الاستشارة مجانية، وتستغرق 30 دقيقة، وتُجرى عبر مكالمة فيديو مع أحد أعضاء فريق الدكتور ميروشنيكوف السريري. لا يوجد أي التزام بالمتابعة.",
+    cta: { label: "احجز استشارتك المجانية", href: "https://en.stemplusclinic.com/#admissions" },
   },
 ];
 
@@ -1824,7 +1820,7 @@ function FAQSection() {
   };
 
   return (
-    <section id="faq" aria-label="Frequently Asked Questions" className="py-24 bg-white">
+    <section id="faq" aria-label="الأسئلة الشائعة" className="py-24 bg-white">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -1832,16 +1828,16 @@ function FAQSection() {
       <div className="max-w-5xl mx-auto px-5">
         <div className="text-center mb-12">
           <p className="text-sm font-semibold uppercase tracking-widest text-[#02C39A] mb-3">
-            Frequently Asked Questions
+            الأسئلة الشائعة
           </p>
           <h2
             className="text-3xl sm:text-4xl font-bold tracking-tight text-[#03045E]"
             style={{ lineHeight: "1.15" }}
           >
-            Everything You Need to Know About Stem Cell Therapy at StemPlus
+            كل ما تحتاج معرفته عن العلاج بالخلايا الجذعية في ستيم بلس
           </h2>
           <p className="mt-4 text-slate-500 max-w-2xl mx-auto">
-            Answers to the most common questions from international patients considering treatment in Tbilisi, Georgia.
+            إجابات على الأسئلة الأكثر شيوعًا من المرضى الدوليين الذين يفكرون في العلاج في تبليسي، جورجيا.
           </p>
         </div>
 
@@ -1857,7 +1853,7 @@ function FAQSection() {
                   aria-expanded={isOpen}
                   aria-controls={aId}
                   onClick={() => setOpen(isOpen ? null : i)}
-                  className="w-full flex items-center justify-between gap-4 py-5 text-left"
+                  className="w-full flex items-center justify-between gap-4 py-5 text-right"
                 >
                   <span className="font-semibold text-base text-[#03045E]">{item.q}</span>
                   {isOpen
@@ -1883,7 +1879,7 @@ function FAQSection() {
                         className="inline-flex items-center gap-1.5 mt-3 text-sm font-semibold text-[#02C39A] hover:text-[#029a7a] transition-colors"
                       >
                         {item.cta.label}
-                        <ArrowRight className="w-3.5 h-3.5" />
+                        <ArrowLeft className="w-3.5 h-3.5" />
                       </a>
                     )}
                   </div>
@@ -1901,23 +1897,23 @@ function FAQSection() {
 const TBILISI_CARDS = [
   {
     img: tbilisiClinic,
-    title: "World-Class Medical Infrastructure",
-    desc: "StemPlus operates exclusively within Leadermed Hospital — a modern, fully equipped multidisciplinary facility. This is not a back-street clinic.",
+    title: "بنية تحتية طبية عالمية المستوى",
+    desc: "تعمل ستيم بلس حصريًا داخل مستشفى ليدرميد — منشأة حديثة ومتعددة التخصصات ومجهزة بالكامل. هذه ليست عيادة في زقاق خلفي.",
   },
   {
     img: tbilisiCity,
-    title: "One of Europe's Most Beautiful Cities",
-    desc: "Medieval fortresses, ornate balconies, sulfur baths, and some of the warmest hospitality you'll find anywhere. Most patients extend their stay.",
+    title: "واحدة من أجمل مدن أوروبا",
+    desc: "قلاع من العصور الوسطى، وشرفات مزخرفة، وحمامات كبريتية، وأحد أكثر أشكال الضيافة دفئًا التي ستجدها في أي مكان. يمدد معظم المرضى إقامتهم.",
   },
   {
     img: tbilisiFood,
-    title: "Extraordinary Food & Culture",
-    desc: "Georgia is considered one of the world's great food cultures. Khinkali, khachapuri, natural wine — your evenings during treatment will be anything but boring.",
+    title: "طعام وثقافة استثنائيان",
+    desc: "تُعتبر جورجيا واحدة من أعظم الثقافات الغذائية في العالم. خينكالي، خاتشابوري، النبيذ الطبيعي — لن تكون أمسياتك خلال العلاج مملة على الإطلاق.",
   },
   {
     img: tbilisiAirport,
-    title: "Easier to Reach Than You Think",
-    desc: "Direct flights from most major European cities, the Middle East, and Central Asia. 3–5 hours from most of our patients' home cities.",
+    title: "الوصول أسهل مما تعتقد",
+    desc: "رحلات مباشرة من معظم المدن الأوروبية الكبرى، والشرق الأوسط، وآسيا الوسطى. من 3 إلى 5 ساعات من معظم المدن التي يقيم فيها مرضانا.",
   },
 ];
 
@@ -1927,16 +1923,16 @@ function WhyTbilisi() {
       <div className="max-w-5xl mx-auto px-5">
         <div className="text-center mb-12">
           <p className="text-base font-semibold uppercase tracking-widest text-[#02C39A] mb-3">
-            Why Tbilisi, Georgia?
+            لماذا تبليسي، جورجيا؟
           </p>
           <h2
             className="text-3xl sm:text-4xl font-bold tracking-tight text-white"
             style={{ lineHeight: "1.15" }}
           >
-            If Georgia Isn't on Your Radar Yet, It Should Be.
+            إذا لم تكن جورجيا على رادارك بعد، فيجب أن تكون كذلك.
           </h2>
           <p className="mt-4 text-base text-white/70 max-w-2xl mx-auto leading-relaxed">
-            Most patients tell us the same thing when they arrive: 'I didn't expect it to be like this.' We take that as a compliment.
+            يخبرنا معظم المرضى بالشيء نفسه عند وصولهم: «لم أتوقع أن تكون بهذا الشكل». نعتبر ذلك مجاملة.
           </p>
         </div>
 
@@ -1964,7 +1960,7 @@ function WhyTbilisi() {
         </div>
 
         <p className="mt-10 text-white/80 text-base italic text-center">
-          Visa-free entry for citizens of 90+ countries including the US, UK, EU, Canada, and Australia.
+          دخول بدون تأشيرة لمواطني أكثر من 90 دولة، بما في ذلك الولايات المتحدة والمملكة المتحدة والاتحاد الأوروبي وكندا وأستراليا.
         </p>
       </div>
     </section>

@@ -1,8 +1,10 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { applyLocale } from "@/lib/locale";
 
 export default function TermsPage() {
   useEffect(() => {
+    applyLocale("en");
     document.title = "Terms of Service — Stem Plus LLC";
   }, []);
   return (
