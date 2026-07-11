@@ -484,12 +484,6 @@ function Header() {
               {l.label}
             </a>
           ))}
-          <Link
-            to="/ar"
-            className="text-sm font-semibold border border-slate-700 rounded-full px-3 py-1 text-slate-300 transition-colors duration-200 hover:text-[#00A896] hover:border-[#00A896]"
-          >
-            العربية
-          </Link>
         </div>
 
         <div className="flex items-center gap-3">
@@ -567,13 +561,6 @@ function Header() {
                 {l.label}
               </a>
             ))}
-            <Link
-              to="/ar"
-              onClick={() => setOpen(false)}
-              className="mt-4 pt-4 border-t border-slate-700/60 text-lg font-semibold text-slate-300 drop-shadow-[0_2px_6px_rgba(0,0,0,0.75)] hover:text-[#00A896] transition-colors"
-            >
-              العربية (AR)
-            </Link>
           </nav>
         </div>
       </div>
@@ -1735,12 +1722,6 @@ function Footer() {
               className="text-sm text-slate-400 transition-colors duration-200 hover:text-[#02C39A]"
             >
               Medical Disclaimer
-            </Link>
-            <Link
-              to="/ar"
-              className="text-sm text-slate-400 transition-colors duration-200 hover:text-[#02C39A]"
-            >
-              العربية (AR)
             </Link>
           </div>
         </div>
