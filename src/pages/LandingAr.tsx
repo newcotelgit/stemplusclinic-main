@@ -46,7 +46,6 @@ import heroBgMobile from "@/assets/hero-bg-mobile.jpg";
 import shadowBg from "@/assets/shadow-bg.jpg";
 import logo from "@/assets/logo.png";
 import testimonialPoster from "@/assets/testimonial-poster.jpg";
-import markLattaThumbnail from "@/assets/mark-latta-thumbnail.jpg";
 import aliceThumbnail from "@/assets/alice-thumbnail.png";
 import patient2 from "@/assets/patient-2.jpg";
 import patient3 from "@/assets/patient-3.jpg";
@@ -112,15 +111,6 @@ type VideoItem = {
 };
 
 const VIDEO_TESTIMONIALS: VideoItem[] = [
-  {
-    id: "v1",
-    src: "https://player.vimeo.com/video/1206930951",
-    poster: markLattaThumbnail,
-    name: "Mark Latta",
-    treatment: "العلاج بالخلايا الجذعية",
-    country: "Sarasota, Florida, USA",
-    flag: "🇺🇸",
-  },
   {
     id: "v2",
     src: "https://player.vimeo.com/video/1206931316",
