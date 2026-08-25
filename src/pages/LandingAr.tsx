@@ -65,6 +65,7 @@ import natia from "@/assets/doctor_image/Natia Alania.jpg";
 import giorgi from "@/assets/doctor_image/Giorgi Archaia.jpg";
 import lili from "@/assets/doctor_image/Lili Martashvili.jpg";
 import mako from "@/assets/doctor_image/Mako Khachidze.jpg";
+import mohammedMuwahed from "@/assets/doctor_image/Mohammed Muwahed.jpg";
 import tbilisiClinic from "@/assets/tbilisi-clinic.jpg";
 import tbilisiCity from "@/assets/tbilisi-city.jpg";
 import tbilisiFood from "@/assets/tbilisi-food.jpg";
@@ -1905,8 +1906,15 @@ function LocalAgent() {
         </div>
 
         <div className="rounded-2xl bg-white shadow-md p-8 sm:p-10">
-          <div className="text-center">
-            <h3 className="text-2xl font-bold text-[#03045E]">محمد موحد</h3>
+          <div className="flex flex-col items-center text-center">
+            <img
+              src={mohammedMuwahed}
+              alt="محمد موحد"
+              loading="lazy"
+              decoding="async"
+              className="w-28 h-28 sm:w-32 sm:h-32 rounded-full object-cover object-top shadow-md ring-4 ring-white outline outline-1 outline-slate-100"
+            />
+            <h3 className="mt-5 text-2xl font-bold text-[#03045E]">محمد موحد</h3>
             <span className="inline-block bg-[#02C39A] text-white text-xs font-semibold px-3 py-1 rounded-full mt-3">
               شريك في عيادة ستيم بلس
             </span>
