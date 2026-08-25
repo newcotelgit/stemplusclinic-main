@@ -64,7 +64,7 @@ export default function PrivacyPageAr() {
 
           <h2 className="text-slate-100 text-xl font-semibold mt-8">7. الاتصال</h2>
           <p>
-            ستيم بلس ذ.م.م.، 21 نودار بوخوا آي لين، تبليسي 0159، جورجيا.{" "}
+            ستيم بلس 21 نودار بوخوا آي لين، تبليسي 0159، جورجيا.{" "}
             <a href="mailto:stemplusclinic@gmail.com" className="text-slate-300 hover:text-[#02C39A] transition-colors">
               stemplusclinic@gmail.com
             </a>
