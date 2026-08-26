@@ -1895,7 +1895,7 @@ function FAQSection() {
 function LocalAgent() {
   return (
     <section className="py-24 bg-secondary/30">
-      <div className="max-w-4xl mx-auto px-5">
+      <div className="max-w-5xl mx-auto px-5">
         <div className="text-center mb-12">
           <p className="text-sm font-semibold uppercase tracking-widest text-[#02C39A] mb-3">
             التواصل والدعم
@@ -1906,13 +1906,13 @@ function LocalAgent() {
         </div>
 
         <div className="rounded-2xl bg-white shadow-md overflow-hidden sm:flex">
-          <div className="sm:w-72 md:w-80 shrink-0 bg-muted">
+          <div className="sm:w-96 md:w-[28rem] shrink-0 bg-muted">
             <img
               src={mohammedMuwahed}
               alt="محمد موحد"
               loading="lazy"
               decoding="async"
-              className="w-full h-72 sm:h-full object-cover object-top"
+              className="w-full h-80 sm:h-full object-cover object-center"
             />
           </div>
 
