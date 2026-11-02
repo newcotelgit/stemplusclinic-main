@@ -474,6 +474,7 @@ function Heritage() {
 }
 
 const NAV_LINKS = [
+  { label: "About", href: "#about" },
   { label: "Testimonials", href: "#video-testimonials" },
   { label: "Treatments", href: "#treatments" },
   { label: "Medical Team", href: "#medical-team" },

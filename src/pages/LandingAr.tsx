@@ -480,6 +480,7 @@ function Heritage() {
 }
 
 const NAV_LINKS = [
+  { label: "عن العيادة", href: "#about" },
   { label: "الشهادات", href: "#video-testimonials" },
   { label: "العلاجات", href: "#treatments" },
   { label: "الفريق الطبي", href: "#medical-team" },
