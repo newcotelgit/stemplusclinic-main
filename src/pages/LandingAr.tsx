@@ -45,6 +45,7 @@ import heroBg from "@/assets/hero-bg-ar.jpg";
 import heroBgMobile from "@/assets/hero-bg-mobile.jpg";
 import shadowBg from "@/assets/shadow-bg.jpg";
 import logo from "@/assets/logo.png";
+import ceoThumbnail from "@/assets/ceo-thumbnail.jpg";
 import testimonialPoster from "@/assets/testimonial-poster.jpg";
 import aliceThumbnail from "@/assets/alice-thumbnail.png";
 import patient2 from "@/assets/patient-2.jpg";
@@ -93,6 +94,7 @@ export default function LandingPageAr() {
     <div className="min-h-screen bg-background text-foreground">
       <Header />
       <Hero />
+      <CeoMessage />
       <VideoTestimonial />
       <Features />
       <Reviews />
@@ -104,6 +106,67 @@ export default function LandingPageAr() {
       <LocalAgent />
       <Footer />
     </div>
+  );
+}
+
+/* ─── CEO Message ─── */
+function CeoMessage() {
+  const [playing, setPlaying] = useState(false);
+  return (
+    <section id="about" className="pt-24 pb-4 bg-white">
+      <div className="max-w-4xl mx-auto px-5">
+        <div className="text-center mb-10">
+          <p className="text-sm font-semibold uppercase tracking-widest text-primary mb-3">
+            عن العيادة
+          </p>
+          <h2
+            className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground"
+            style={{ lineHeight: "1.15" }}
+          >
+            كلمة من الرئيسة التنفيذية
+          </h2>
+          <p className="mt-4 text-slate-500 max-w-2xl mx-auto">
+            استمع مباشرة إلى الرئيسة التنفيذية لستيم بلس وهي تتحدث عن قصة العيادة، ونهجنا في الطب التجديدي،
+            والعلاجات التي نقدمها في مستشفى ليدرميد في تبليسي. الفيديو باللغة الجورجية مع ترجمة عربية.
+          </p>
+        </div>
+        <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-lg bg-black">
+          {playing ? (
+            <iframe
+              src="https://player.vimeo.com/video/1242560733?dnt=1&title=0&byline=0&portrait=0&autoplay=1"
+              title="كلمة من الرئيسة التنفيذية"
+              className="absolute inset-0 w-full h-full"
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowFullScreen
+            />
+          ) : (
+            <button
+              type="button"
+              onClick={() => setPlaying(true)}
+              className="group absolute inset-0 w-full h-full"
+              aria-label="تشغيل الفيديو: كلمة من الرئيسة التنفيذية"
+            >
+              <img
+                src={ceoThumbnail}
+                alt=""
+                loading="lazy"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <span className="absolute inset-0 flex items-center justify-center">
+                <span
+                  className="flex items-center justify-center w-20 h-20 rounded-full shadow-2xl shadow-black/40 ring-1 ring-white/20 backdrop-blur-sm transition-transform duration-300 group-hover:scale-110"
+                  style={{ backgroundColor: "#02C39A" }}
+                >
+                  <svg viewBox="0 0 24 24" fill="white" className="w-8 h-8 ml-1">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </span>
+              </span>
+            </button>
+          )}
+        </div>
+      </div>
+    </section>
   );
 }
 
