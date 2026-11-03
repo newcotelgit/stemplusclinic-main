@@ -127,7 +127,7 @@ function CeoMessage() {
           </h2>
           <p className="mt-4 text-slate-500 max-w-2xl mx-auto">
             استمع مباشرة إلى الرئيسة التنفيذية لستيم بلس وهي تتحدث عن قصة العيادة، ونهجنا في الطب التجديدي،
-            والعلاجات التي نقدمها في مستشفى ليدرميد في تبليسي. الفيديو باللغة الجورجية مع ترجمة عربية.
+            والعلاجات التي نقدمها في مستشفى ليدرميد في تبليسي.
           </p>
         </div>
         <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-lg bg-black">
